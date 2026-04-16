@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EcoStamp - Home</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#406c00",
+                    "primary-container": "#9df197",
+                    "on-error": "#ffefec",
+                    "tertiary-fixed": "#c1fd7c",
+                    "primary": "#176a21",
+                    "secondary-container": "#f7c7b7",
+                    "tertiary": "#3c6600",
+                    "secondary-dim": "#6a473b",
+                    "on-tertiary": "#d9ffab",
+                    "surface-container-highest": "#d6e0cd",
+                    "primary-dim": "#025d16",
+                    "inverse-surface": "#0a1008",
+                    "tertiary-dim": "#345900",
+                    "on-primary-fixed": "#00460e",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#a8afa2",
+                    "surface": "#f2f9ea",
+                    "surface-dim": "#ccd8c4",
+                    "on-secondary-container": "#603f33",
+                    "on-primary-fixed-variant": "#12661e",
+                    "error": "#b02500",
+                    "secondary": "#775346",
+                    "on-error-container": "#520c00",
+                    "on-tertiary-container": "#396100",
+                    "on-secondary": "#ffefeb",
+                    "surface-container": "#e2ebda",
+                    "on-secondary-fixed-variant": "#6b483c",
+                    "on-background": "#2a3127",
+                    "on-surface-variant": "#575e52",
+                    "outline": "#72796d",
+                    "surface-container-low": "#ebf3e3",
+                    "secondary-fixed-dim": "#e8b9a9",
+                    "primary-fixed": "#9df197",
+                    "on-tertiary-fixed": "#2c4d00",
+                    "on-primary": "#d1ffc8",
+                    "primary-fixed-dim": "#90e28a",
+                    "surface-variant": "#d6e0cd",
+                    "tertiary-fixed-dim": "#b3ee6f",
+                    "error-dim": "#b92902",
+                    "surface-tint": "#176a21",
+                    "tertiary-container": "#c1fd7c",
+                    "on-surface": "#2a3127",
+                    "error-container": "#f95630",
+                    "surface-container-high": "#dce6d4",
+                    "inverse-on-surface": "#989f92",
+                    "inverse-primary": "#9df197",
+                    "background": "#f2f9ea",
+                    "surface-bright": "#f2f9ea",
+                    "on-secondary-fixed": "#4b2d22",
+                    "on-primary-container": "#005c15",
+                    "secondary-fixed": "#f7c7b7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      body { font-family: 'Inter', sans-serif; }
+      .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-nav {
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-background min-h-screen pb-32">
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-emerald-50/70 dark:bg-emerald-950/70 backdrop-blur-3xl flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="eco">eco</span>
+<span class="text-2xl font-black text-emerald-900 dark:text-emerald-50 tracking-tight font-headline">EcoStamp</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-emerald-100/50 transition-colors">
+<span class="material-symbols-outlined text-emerald-800" data-icon="notifications">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img class="w-full h-full object-cover" data-alt="portrait of a young smiling professional woman with a clean natural background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAz_6URfAORade00f7wryrHcD6NMvJGS5ZGR-SzaslgvbNRdoDA_YNG3wMA87MGzSqWvv5in8gX2Vp55Ws1oxT2TGCzQHnmmLvmxD9_0OWMLVdviBia8wTMpxOOc0Po-lEba_6yta3fR9uaKYV4ajz0Fy5A5Q7W1kw_CjTs19-gBukpDNy1S9g7xE2rGV-QsdOkjTRe2gn1tbj-ocpP9TV7kC1ECqWs0b3PAU_Av1NN3Px2Q_8WHKE8lO55GfgxTfyGlcJFSUluITIx"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-2xl mx-auto space-y-8">
+<!-- Hero Section: Streak & Multiplier -->
+<section class="relative overflow-hidden bg-primary-container rounded-xl p-8 shadow-sm">
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="relative z-10 flex flex-col gap-1">
+<span class="text-on-primary-container font-semibold tracking-wide uppercase text-xs">Your Progress</span>
+<div class="flex items-baseline gap-2">
+<h1 class="text-4xl font-black text-on-primary-container font-headline">7 Day Streak 🔥</h1>
+</div>
+<div class="mt-4 flex gap-3">
+<div class="bg-primary/10 backdrop-blur-md px-4 py-2 rounded-lg flex items-center gap-2 border border-primary/5">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="bolt">bolt</span>
+<span class="font-bold text-primary font-headline">1.2x Multiplier</span>
+</div>
+<div class="bg-surface-container-lowest/60 px-4 py-2 rounded-lg flex items-center gap-2">
+<span class="text-on-surface-variant text-sm font-medium">Keep it up!</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Impact Dashboard (Bento Grid) -->
+<section class="grid grid-cols-2 gap-4">
+<div class="col-span-2 bg-surface-container-lowest p-6 rounded-xl flex flex-col gap-2">
+<span class="text-on-surface-variant font-medium text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-primary scale-75" data-icon="token">token</span>
+                    Total Stamps earned
+                </span>
+<span class="text-5xl font-black text-primary font-headline">1,240</span>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl flex flex-col gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="co2">co2</span>
+</div>
+<div>
+<span class="block text-2xl font-bold font-headline">42.5 kg</span>
+<span class="text-xs text-on-surface-variant font-medium uppercase tracking-wider">CO2 reduced</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl flex flex-col gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="park">park</span>
+</div>
+<div>
+<span class="block text-2xl font-bold font-headline">12 Trees</span>
+<span class="text-xs text-on-surface-variant font-medium uppercase tracking-wider">Trees saved</span>
+</div>
+</div>
+</section>
+<!-- Green Stations (Horizontal Scroll) -->
+<section class="space-y-4">
+<div class="flex justify-between items-end">
+<h2 class="text-xl font-extrabold font-headline text-on-surface">Trạm Xanh gần bạn</h2>
+<button class="text-primary font-bold text-sm">View all</button>
+</div>
+<div class="flex overflow-x-auto pb-4 -mx-6 px-6 gap-4 no-scrollbar">
+<!-- Station Card 1 -->
+<div class="min-w-[280px] bg-surface-container-lowest rounded-xl overflow-hidden flex flex-col shadow-sm">
+<div class="h-32 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="modern eco-friendly recycling station with clean wooden panels and digital screens in a bright park setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkdyXzjg6wBMqnjnDUZg2zkLxO_Z7AHfoXuKHUrAhfnxEHZuwuxQi0D-jTcSvfxGZS9PZzjvfnmcqywLEqpD2fTEUrlzFxItpIBpn_ybWinr4RhX2b8_hlrx7Wx_sZaVon-efwRg1sOJs7xO_UNfFTceOHsfVhl8T_5Rc4oOU6zOSthALFKcZ0Z9ca9mKleCgT_DVFqDojb_oZg2NAD13ccADL6RtAbSGUrPnsdOexlckrKzeMQT_LmzvbFl0HOojL7082tOvxwJnQ"/>
+</div>
+<div class="p-4 flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-lg leading-tight">GreenPoint Landmark 81</h3>
+<span class="bg-tertiary-container text-on-tertiary-container text-[10px] px-2 py-1 rounded-full font-black uppercase">Open</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="near_me">near_me</span>
+<span>450m away</span>
+</div>
+</div>
+</div>
+<!-- Station Card 2 -->
+<div class="min-w-[280px] bg-surface-container-lowest rounded-xl overflow-hidden flex flex-col shadow-sm">
+<div class="h-32 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="smart waste management bins on a modern urban street with glass buildings and green trees" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLitjnwo1Ss-rOo8ra-vWUQ02egcJnK0SuF7xTFGq-Xu7pAT8E7oaJll4hVltqs3gIV12MmjTsoPH_fS8VW1Hpzcy5oMKea6D92s_97t3X8WFJeSmh8-SivxiFNVNu1Ody9aCnXOgLs-ZzAVfNuS8wpXRAHFvWGxRR_WL_grW3NWlJQWqw7J6y_zIvIU1ADUWjJ-yXyZenVeun9lUAnHglTXqGuwXdOYmmj3EZKokTcbBQfTn-ZD2-7j0afdn2n7KDG1E8lSAAJqfr"/>
+</div>
+<div class="p-4 flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-lg leading-tight">EcoHub District 1</h3>
+<span class="bg-secondary-container text-on-secondary-container text-[10px] px-2 py-1 rounded-full font-black uppercase">Full</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="near_me">near_me</span>
+<span>1.2km away</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Green Tips Section -->
+<section class="space-y-4">
+<h2 class="text-xl font-extrabold font-headline text-on-surface">Mẹo Xanh cho bạn</h2>
+<div class="flex overflow-x-auto pb-4 -mx-6 px-6 gap-4 no-scrollbar">
+<!-- Tip 1 -->
+<div class="min-w-[260px] bg-secondary text-on-secondary p-5 rounded-xl flex flex-col gap-3 shadow-sm relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-7xl" data-icon="wash">wash</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xl" data-icon="tips_and_updates">tips_and_updates</span>
+<span class="font-bold font-headline uppercase tracking-wider text-[10px]">Làm sạch</span>
+</div>
+<p class="text-sm font-medium leading-relaxed z-10">Rửa sạch hộp sữa trước khi tái chế có thể giúp giảm 30% lượng vi khuẩn và mùi hôi!</p>
+</div>
+<!-- Tip 2 -->
+<div class="min-w-[260px] bg-tertiary text-on-tertiary p-5 rounded-xl flex flex-col gap-3 shadow-sm relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-7xl" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xl" data-icon="tips_and_updates">tips_and_updates</span>
+<span class="font-bold font-headline uppercase tracking-wider text-[10px]">Mua sắm</span>
+</div>
+<p class="text-sm font-medium leading-relaxed z-10">Mang theo túi vải khi đi mua sắm giúp bạn giảm trung bình 500 túi nilon mỗi năm.</p>
+</div>
+<!-- Tip 3 -->
+<div class="min-w-[260px] bg-primary-dim text-on-primary p-5 rounded-xl flex flex-col gap-3 shadow-sm relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-7xl" data-icon="compost">compost</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xl" data-icon="tips_and_updates">tips_and_updates</span>
+<span class="font-bold font-headline uppercase tracking-wider text-[10px]">Phân loại</span>
+</div>
+<p class="text-sm font-medium leading-relaxed z-10">Phân loại rác tại nguồn giúp tăng hiệu quả tái chế lên gấp 3 lần cho các nhà máy.</p>
+</div>
+</div>
+</section>
+<!-- Recent Activity -->
+<section class="space-y-4">
+<h2 class="text-xl font-extrabold font-headline text-on-surface">Recent Activity</h2>
+<div class="bg-surface-container-lowest rounded-xl divide-y divide-surface-container shadow-sm">
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="recycling">recycling</span>
+</div>
+<div>
+<p class="font-bold">Nhựa PET &amp; Giấy</p>
+<p class="text-xs text-on-surface-variant">Landmark 81 • 2 hours ago</p>
+</div>
+</div>
+<span class="font-headline font-black text-primary">+25</span>
+</div>
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<div>
+<p class="font-bold">Đổi thưởng: Túi vải</p>
+<p class="text-xs text-on-surface-variant">EcoShop • Yesterday</p>
+</div>
+</div>
+<span class="font-headline font-black text-error">-150</span>
+</div>
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="recycling">recycling</span>
+</div>
+<div>
+<p class="font-bold">Lon nhôm</p>
+<p class="text-xs text-on-surface-variant">District 1 Hub • 2 days ago</p>
+</div>
+</div>
+<span class="font-headline font-black text-primary">+12</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-[3rem] bg-emerald-50/70 dark:bg-emerald-950/70 backdrop-blur-3xl shadow-[0_-12px_48px_rgba(0,0,0,0.06)] flex justify-around items-end pb-6 px-4">
+<a class="flex flex-col items-center justify-center bg-emerald-600 dark:bg-emerald-500 text-white dark:text-emerald-950 rounded-full p-4 mb-6 shadow-[0_12px_32px_rgba(46,125,50,0.3)] scale-110 transition-all duration-300 ease-out active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-emerald-800/50 dark:text-emerald-200/50 p-2 hover:text-emerald-700 transition-all duration-300 ease-out active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="map">map</span>
+<span class="font-headline text-[10px] font-semibold uppercase tracking-wider">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center text-emerald-800/50 dark:text-emerald-200/50 p-2 hover:text-emerald-700 transition-all duration-300 ease-out active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="font-headline text-[10px] font-semibold uppercase tracking-wider">Scan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-emerald-800/50 dark:text-emerald-200/50 p-2 hover:text-emerald-700 transition-all duration-300 ease-out active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="redeem">redeem</span>
+<span class="font-headline text-[10px] font-semibold uppercase tracking-wider">Rewards</span>
+</a>
+<a class="flex flex-col items-center justify-center text-emerald-800/50 dark:text-emerald-200/50 p-2 hover:text-emerald-700 transition-all duration-300 ease-out active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-headline text-[10px] font-semibold uppercase tracking-wider">Profile</span>
+</a>
+</nav>
+</body></html>
