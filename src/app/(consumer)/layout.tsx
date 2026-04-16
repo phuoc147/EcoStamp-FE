@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 import { redirect } from "next/navigation";
-import { getServerSessionUser } from "@/src/lib/auth/session-server";
 import BottomBar from "@/src/components/BottomBars";
 import ConsumerHeader from "@/src/components/ConsumerHeader";
+import { getServerSessionUser } from "@/src/features/auth/lib";
 
 export default async function ConsumerLayout({
   children,
