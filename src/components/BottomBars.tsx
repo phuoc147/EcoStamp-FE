@@ -15,22 +15,23 @@ function getTabs(role: Role): Tab[] {
   switch (role) {
     case "consumer":
       return [
-        { label: "Trang chủ", href: "/home", icon: "home" },
-        { label: "Trạm xanh", href: "/map", icon: "map" },
-        { label: "Quét", href: "/scan", icon: "qr_code_scanner" },
-        { label: "Sưu tập", href: "/collection", icon: "collections" },
-        { label: "Cá nhân", href: "/profile", icon: "person" },
+        { label: "Trang chủ", href: "/csm/home", icon: "home" },
+        { label: "Trạm xanh", href: "/csm/map", icon: "map" },
+        { label: "Quét", href: "/csm/scan", icon: "qr_code_scanner" },
+        { label: "Sưu tập", href: "/csm/collection", icon: "collections" },
+        { label: "Cộng đồng", href: "/csm/community", icon: "groups" },
+        { label: "Cá nhân", href: "/csm/profile", icon: "person" },
       ];
 
     case "partner":
       return [
-        { label: "Dashboard", href: "/dashboard", icon: "home" },
-        { label: "Campaign", href: "/campaign", icon: "map" },
-        { label: "Verify", href: "/verification", icon: "qr_code_scanner" },
+        { label: "Dashboard", href: "/pn/dashboard", icon: "home" },
+        { label: "Campaign", href: "/pn/campaign", icon: "map" },
+        { label: "Verify", href: "/pn/verification", icon: "qr_code_scanner" },
       ];
 
     case "employee":
-      return [{ label: "Employee", href: "/employee", icon: "person" }];
+      return [{ label: "Employee", href: "/pn/employee", icon: "person" }];
   }
 }
 

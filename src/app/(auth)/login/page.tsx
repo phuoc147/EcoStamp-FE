@@ -8,9 +8,9 @@ import { login } from "@/src/features/auth/api";
 
 
 const LOGIN_REDIRECT_BY_ROLE: Record<Role, string> = {
-  consumer: "/home",
-  partner: "/dashboard",
-  employee: "/employee",
+  consumer: "/csm/home",
+  partner: "/pn/home",
+  employee: "/pn/home",
 };
 
 const SIGN_UP_ROLES: Role[] = ["consumer", "partner", "employee"];
