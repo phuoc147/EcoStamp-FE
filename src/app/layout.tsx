@@ -10,12 +10,11 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: "EcoStamp",
-  description: "Production-grade frontend skeleton with mock auth",
+  description: "Trải nghiệm sống xanh trên mọi nền tảng",
 };
 
 export default function RootLayout({
@@ -34,9 +33,9 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#f2f9ea] flex justify-center">
+      <body className="bg-[#f2f9ea] min-h-screen">
         <Providers>
-          <div className="w-full min-h-screen" style={{ maxWidth: 430 }}>
+          <div className="w-full min-h-screen">
             {children}
           </div>
         </Providers>
