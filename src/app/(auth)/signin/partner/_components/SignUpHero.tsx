@@ -148,7 +148,7 @@ export default function SignUpHero() {
                     </div>
 
                     {/* Impact Badge */}
-                    <div className="relative w-full h-32 rounded-2xl overflow-hidden mb-6 bg-gradient-to-br from-green-900 to-green-700 flex items-center justify-center">
+                    <div className="relative w-full h-32 rounded-2xl overflow-hidden mb-6 bg-linear-to-br from-green-900 to-green-700 flex items-center justify-center">
                         <div className="text-6xl">🌲</div>
                         <span className="absolute top-3 left-3 bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full font-semibold">
                             🌱 Green Station
@@ -170,7 +170,7 @@ export default function SignUpHero() {
                     {/* Card 1: Sustainability */}
                     <div className="bg-[#EFF6E7] rounded-xl p-4 mb-3">
                         <div className="flex items-center gap-3 mb-2">
-                            <div className="w-10 h-10 bg-green-200 rounded-lg flex items-center justify-center flex-shrink-0 text-lg">
+                            <div className="w-10 h-10 bg-green-200 rounded-lg flex items-center justify-center shrink-0 text-lg">
                                 🌱
                             </div>
                             <h3 className="font-bold text-gray-800 text-[15px]">Tính bền vững</h3>
@@ -183,7 +183,7 @@ export default function SignUpHero() {
                     {/* Card 2: Community */}
                     <div className="bg-[#EFF6E7] rounded-xl p-4 mb-6">
                         <div className="flex items-center gap-3 mb-2">
-                            <div className="w-10 h-10 bg-green-200 rounded-lg flex items-center justify-center flex-shrink-0 text-lg">
+                            <div className="w-10 h-10 bg-green-200 rounded-lg flex items-center justify-center shrink-0 text-lg">
                                 👥
                             </div>
                             <h3 className="font-bold text-gray-800 text-[15px]">Cộng đồng</h3>
@@ -399,7 +399,7 @@ export default function SignUpHero() {
                                 Xác nhận vị trí
                             </label>
                             {/* Map Container */}
-                            <div className="w-full h-64 bg-gradient-to-br from-blue-100 to-blue-50 rounded-2xl border-2 border-blue-200 relative overflow-hidden cursor-move group">
+                            <div className="w-full h-64 bg-linear-to-br from-blue-100 to-blue-50 rounded-2xl border-2 border-blue-200 relative overflow-hidden cursor-move group">
                                 {/* Map Grid Background */}
                                 <div className="absolute inset-0 opacity-20">
                                     <div className="absolute inset-0" style={{
@@ -650,7 +650,7 @@ export default function SignUpHero() {
                         {/* Status Message */}
                         <div className="bg-[#e8f0e2] rounded-2xl p-4 mb-6">
                             <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 bg-[#7ec66c] rounded-xl flex items-center justify-center flex-shrink-0">
+                                <div className="w-10 h-10 bg-[#7ec66c] rounded-xl flex items-center justify-center shrink-0">
                                     <span className="text-xl">⏱️</span>
                                 </div>
                                 <div className="flex-1">
@@ -833,7 +833,7 @@ export default function SignUpHero() {
                         <div className="space-y-4 mb-4">
                             {/* Card 1: Quy trình chuyên gia */}
                             <div className="bg-white rounded-2xl p-5 flex gap-4">
-                                <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center shrink-0">
                                     <span className="text-xl">👤</span>
                                 </div>
                                 <div className="flex-1">
@@ -844,7 +844,7 @@ export default function SignUpHero() {
 
                             {/* Card 2: Thông báo đẩy */}
                             <div className="bg-white rounded-2xl p-5 flex gap-4">
-                                <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center shrink-0">
                                     <Bell size={20} className="text-green-700" />
                                 </div>
                                 <div className="flex-1">
