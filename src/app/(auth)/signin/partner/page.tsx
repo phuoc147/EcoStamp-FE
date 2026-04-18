@@ -1,3 +1,7 @@
+import SignUpHero from "./_components/SignUpHero";
+
 export default function SignInPartnerPage() {
-  return <div className="p-6">Sign In Partner Page</div>;
+  return (
+    <SignUpHero />
+  );
 }
