@@ -12,12 +12,13 @@ export default function Homepage({ onNext, onBack }: StepProps) {
     return (
         <div className="w-full bg-[#f5f7f3] p-6 shadow-md">
             {/* Header */}
-            <div className="flex items-center gap-2 mb-6">
-                <span className="text-green-700 hover:opacity-70 cursor-pointer">←</span>
-                <span className="text-base font-semibold text-green-700">
-                    EcoStamp
-                </span>
-            </div>
+            <header className="flex items-center justify-between mb-8">
+                <button onClick={onBack} className="p-2 -ml-2 text-[#176a21] hover:bg-emerald-50 rounded-full transition">
+                <ArrowLeft size={24} />
+                </button>
+                <h1 className="font-bold text-lg text-[#176a21]">EcoStamp</h1>
+                <div className="w-10" />
+            </header>
 
             {/* Impact Badge */}
             <div className="relative w-full h-32 rounded-2xl overflow-hidden mb-6 bg-linear-to-br from-green-900 to-green-700 flex items-center justify-center">

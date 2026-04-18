@@ -19,8 +19,8 @@ function RegistrationSteps() {
   return (
     <main className="min-h-screen bg-[#f2f9ea] flex flex-col items-center">
       <div className="w-full lg:max-w-4xl min-h-screen lg:min-h-fit lg:mt-10 lg:mb-10 lg:bg-white lg:rounded-[48px] lg:shadow-xl overflow-hidden flex flex-col">
-        {step === 1 && <Homepage onNext={() => navigateTo(2)} onBack={() => router.back()} />}
-        {step === 2 && <ChooseStationPage onNext={() => navigateTo(3)} onBack={() => router.push("/login")} />}
+        {step === 1 && <Homepage onNext={() => navigateTo(2)} onBack={() => router.push("/login")} />}
+        {step === 2 && <ChooseStationPage onNext={() => navigateTo(3)} onBack={() => router.back()} />}
         {step === 3 && <SetPinPage onNext={() => navigateTo(4)} onBack={() => router.back()} />}
         {step === 4 && <SuccessPage onHome={() => router.push("/signin/employee?step=1")} />}
       </div>
