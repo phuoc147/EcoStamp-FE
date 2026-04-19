@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import "./Profile.css";
 import { useLang } from "../../i18n/LangContext";
