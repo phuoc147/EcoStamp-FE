@@ -1,3 +1,4 @@
+import Profile from "./pages/Profile/Profile";
 export default function ProfilePage() {
-  return <div>Profile Page</div>;
+  return <div>Profile</div>;
 }
