@@ -33,16 +33,16 @@ export default function VerificationInfo({ formData, handleInputChange, errorMes
     return (
         <div className="w-full bg-[#f5f7f3] min-h-screen flex flex-col">
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 bg-[#f5f7f3]">
-                <span className="text-green-700 hover:opacity-70 cursor-pointer text-xl" onClick={onBack}>←</span>
-                <span className="text-center text-lg font-semibold text-green-700">
+            <div className="flex items-center justify-between px-4 py-3 bg-[#f5f7f3]">
+                <span className="text-green-700 hover:opacity-70 cursor-pointer text-lg" onClick={onBack}>←</span>
+                <span className="text-center text-sm font-semibold text-green-700">
                     Đăng ký Trạm Xanh
                 </span>
-                <div className="w-6"></div>
+                <div className="w-5"></div>
             </div>
 
             {/* Progress */}
-            <div className="px-6 py-4">
+            <div className="px-4 py-3">
                 <p className="text-center text-sm font-medium text-gray-700 mb-3">
                     BƯỚC 3 / 4
                 </p>
@@ -52,7 +52,7 @@ export default function VerificationInfo({ formData, handleInputChange, errorMes
             </div>
 
             {/* Content */}
-            <div className="flex-1 px-6 pb-6 overflow-y-auto">
+            <div className="flex-1 px-4 pb-4 overflow-y-auto">
                 {/* Title */}
                 <h1 className="text-[28px] font-bold text-gray-900 mb-4 leading-tight text-center">
                     Xác Nhận Chủ Trạm

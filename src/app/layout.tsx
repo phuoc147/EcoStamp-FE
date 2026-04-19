@@ -39,9 +39,9 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#f2f9ea] min-h-screen">
+      <body className="bg-gray-200 min-h-screen flex items-center justify-center">
         <Providers>
-          <div className="w-full min-h-screen">
+          <div className="w-93.75 h-screen max-h-screen bg-white shadow-2xl overflow-hidden flex flex-col">
             {children}
           </div>
         </Providers>

@@ -18,7 +18,7 @@ export default function EditBasicInfo({ name, onNameChange, capKg, onCapKgChange
         {/* Tên trạm */}
         <div>
           <label className="block text-[9px] font-bold text-gray-500 mb-1.5 uppercase tracking-wider">Tên trạm</label>
-          <input 
+          <input
             type="text" value={name} onChange={(e) => onNameChange(e.target.value)}
             className="w-full bg-[#e3ecd9] text-[#1c3f25] text-xs font-semibold rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-[#267a32]/30"
           />
@@ -27,7 +27,7 @@ export default function EditBasicInfo({ name, onNameChange, capKg, onCapKgChange
         {/* Mã trạm (Disabled) */}
         <div>
           <label className="block text-[9px] font-bold text-gray-500 mb-1.5 uppercase tracking-wider">Mã trạm</label>
-          <input 
+          <input
             type="text" value="QK-2023-013" disabled
             className="w-full bg-[#e3ecd9]/50 text-gray-400 text-xs font-semibold rounded-xl py-3 px-4 outline-none cursor-not-allowed"
           />
@@ -37,9 +37,9 @@ export default function EditBasicInfo({ name, onNameChange, capKg, onCapKgChange
         <div>
           <label className="block text-[9px] font-bold text-gray-500 mb-1.5 uppercase tracking-wider">Công suất tối đa (KG)</label>
           <div className="relative">
-            <input 
+            <input
               type="number" value={capKg} onChange={(e) => onCapKgChange(e.target.value)}
-              className="w-full bg-[#e3ecd9] text-[#1c3f25] text-xs font-semibold rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-[#267a32]/30"
+              className="no-spinner w-full bg-[#e3ecd9] text-[#1c3f25] text-xs font-semibold rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-[#267a32]/30"
             />
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] font-bold text-gray-400">kg</span>
           </div>
@@ -49,9 +49,9 @@ export default function EditBasicInfo({ name, onNameChange, capKg, onCapKgChange
         <div>
           <label className="block text-[9px] font-bold text-gray-500 mb-1.5 uppercase tracking-wider">Công suất tối đa (LÍT)</label>
           <div className="relative">
-            <input 
+            <input
               type="number" value={capL} onChange={(e) => onCapLChange(e.target.value)}
-              className="w-full bg-[#e3ecd9] text-[#1c3f25] text-xs font-semibold rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-[#267a32]/30"
+              className="no-spinner w-full bg-[#e3ecd9] text-[#1c3f25] text-xs font-semibold rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-[#267a32]/30"
             />
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] font-bold text-gray-400">lít</span>
           </div>

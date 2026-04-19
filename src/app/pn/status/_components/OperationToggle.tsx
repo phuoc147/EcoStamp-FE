@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import React from 'react';
 
 interface OperationToggleProps {
   isOpen: boolean;
@@ -20,17 +20,19 @@ export default function OperationToggle({ isOpen, onToggle }: OperationTogglePro
         </p>
       </div>
 
-      {/* Custom Toggle Switch */}
-      <div 
+      {/* Toggle Switch */}
+      <button
         onClick={onToggle}
-        className={`w-13 h-7.5 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${isOpen ? 'bg-[#1b5e20]' : 'bg-gray-300'}`}
+        className={`relative inline-flex items-center h-6 w-11 rounded-full transition-colors overflow-hidden ${isOpen
+          ? 'bg-[#4caf50]'
+          : 'bg-gray-300'
+          }`}
       >
-        <motion.div 
-          className="bg-white w-5.5 h-5.5 rounded-full shadow-sm"
-          animate={{ x: isOpen ? 22 : 0 }}
-          transition={{ type: "spring", stiffness: 500, damping: 30 }}
-        />
-      </div>
+        <span
+          className={`inline-block h-5 w-5 rounded-full bg-white shadow transition-transform ${isOpen ? 'translate-x-5' : 'translate-x-0'
+            }`}
+        ></span>
+      </button>
     </div>
   );
 }

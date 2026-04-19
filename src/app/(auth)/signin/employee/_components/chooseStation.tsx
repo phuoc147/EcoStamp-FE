@@ -35,15 +35,15 @@ export default function ChooseStationPage({ onNext, onBack }: StepProps) {
     }
   };
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col flex-1 p-6 md:p-12">
-      <header className="flex items-center justify-between mb-8">
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col flex-1 p-4 md:p-12">
+      <header className="flex items-center justify-between mb-6">
         <button
           onClick={onBack}
           className="p-2 -ml-2 text-[#176a21] hover:bg-emerald-50 rounded-full transition-colors"
         >
           <ArrowLeft size={24} />
         </button>
-        <h1 className="font-bold text-lg text-[#176a21]">Đăng ký nhân viên</h1>
+        <h1 className="font-bold text-base text-[#176a21]">Đăng ký nhân viên</h1>
         <div className="w-10" />
       </header>
 

@@ -40,16 +40,16 @@ export default function Success({ onBack }: StepProps) {
     return (
         <div className="w-full bg-[#f5f7f3] min-h-screen flex flex-col">
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 bg-[#f5f7f3]">
-                <span className="text-green-700 hover:opacity-70 cursor-pointer text-xl" onClick={onBack}>←</span>
-                <span className="text-center text-lg font-semibold text-green-700">
-                    Đăng ký Trạm Xanh
+            <div className="flex items-center justify-between px-4 py-3 bg-[#f5f7f3]">
+                <span className="text-green-700 hover:opacity-70 cursor-pointer text-lg" onClick={onBack}>←</span>
+                <span className="text-center text-sm font-semibold text-green-700">
+                    Hoàn tất
                 </span>
-                <div className="w-6"></div>
+                <div className="w-5"></div>
             </div>
 
             {/* Content */}
-            <div className="flex-1 px-6 pb-6 overflow-y-auto flex flex-col">
+            <div className="flex-1 px-4 pb-4 overflow-y-auto flex flex-col">
                 {/* Clock Icon Animation */}
                 <div className="flex justify-center mb-4 mt-6">
                     <div className="relative w-28 h-28 bg-white rounded-3xl flex items-center justify-center shadow-lg">

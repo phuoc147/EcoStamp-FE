@@ -9,7 +9,7 @@ export default function EnvImpact() {
         <div className="flex items-center gap-4">
           <div className="bg-white/20 p-2.5 rounded-full"><Cloud size={18} /></div>
           <div>
-            <div className="text-2xl font-bold">-2.4t</div>
+            <div className="text-2xl font-bold">2.4T</div>
             <div className="text-[11px] opacity-80">Phát thải CO2 giảm</div>
           </div>
         </div>

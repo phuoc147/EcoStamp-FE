@@ -38,16 +38,16 @@ export default function SetPinPage({ onNext, onBack }: StepProps) {
   return (
     <div className="w-full bg-[#f2f9ea] min-h-screen flex flex-col">
       {/* Header */}
-      <div className="flex items-center justify-between px-6 py-4 bg-[#f2f9ea]">
-        <span className="text-[#176a21] hover:opacity-70 cursor-pointer text-xl" onClick={onBack}>←</span>
-        <span className="text-center text-lg font-semibold text-[#176a21]">
+      <div className="flex items-center justify-between px-4 py-3 bg-[#f2f9ea]">
+        <span className="text-[#176a21] hover:opacity-70 cursor-pointer text-lg" onClick={onBack}>←</span>
+        <span className="text-center text-sm font-semibold text-[#176a21]">
           Đăng ký nhân viên
         </span>
-        <div className="w-6"></div>
+        <div className="w-5"></div>
       </div>
 
       {/* Progress */}
-      <div className="px-6 py-4">
+      <div className="px-4 py-3">
         <p className="text-center text-sm font-medium text-gray-700 mb-3">
           BƯỚC 2 / 2
         </p>
@@ -57,7 +57,7 @@ export default function SetPinPage({ onNext, onBack }: StepProps) {
       </div>
 
       {/* Content */}
-      <div className="flex-1 px-6 pb-6 overflow-y-auto flex flex-col">
+      <div className="flex-1 px-4 pb-4 overflow-y-auto flex flex-col">
         {/* Title */}
         <h1 className="text-[28px] font-bold text-gray-900 mb-4 leading-tight text-center">
           Thiết lập Mã PIN bảo mật

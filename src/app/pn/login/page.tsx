@@ -1,0 +1,160 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+
+export default function PartnerLoginPage() {
+    const router = useRouter();
+    const [pin, setPin] = useState("");
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
+
+    // Verify PIN
+    const handlePinSubmit = () => {
+        setErrorMessage(null);
+        if (pin.length !== 6) {
+            setErrorMessage("Vui lòng nhập mã PIN 6 số");
+            return;
+        }
+
+        // Simulate API call
+        setIsLoading(true);
+        setTimeout(() => {
+            setIsLoading(false);
+            // TODO: Replace with actual API call to verify PIN
+            console.log("Login successful with PIN:", pin);
+            router.push("/pn/dashboard");
+        }, 1000);
+    };
+
+    const handlePinDelete = () => {
+        setPin((prev) => prev.slice(0, -1));
+    };
+
+    const handlePinNum = (num: string) => {
+        if (pin.length < 6) {
+            setPin((prev) => prev + num);
+        }
+    };
+
+    return (
+        <div className="w-full bg-[#f5f7f3] min-h-screen flex flex-col">
+            {/* Header */}
+            <div className="flex items-center justify-between px-4 py-3 bg-[#f5f7f3]">
+                <span className="text-[#176a21] hover:opacity-70 cursor-pointer text-lg" onClick={() => window.history.back()}>←</span>
+                <span className="text-center text-sm font-semibold text-[#176a21]">
+                    Đăng nhập Trạm Xanh
+                </span>
+                <div className="w-5"></div>
+            </div>
+
+            {/* Progress */}
+            <div className="px-4 py-3">
+                <p className="text-center text-sm font-medium text-gray-700 mb-3">
+                    ĐĂNG NHẬP
+                </p>
+                <div className="w-full bg-gray-300 rounded-full h-2">
+                    <div className="bg-[#176a21] h-2 rounded-full" style={{ width: '100%' }}></div>
+                </div>
+            </div>
+
+            {/* Content */}
+            <div className="flex-1 px-4 pb-4 overflow-y-auto flex flex-col">
+                {/* Title */}
+                <h1 className="text-[28px] font-bold text-gray-900 mb-4 leading-tight text-center">
+                    Nhập Mã PIN
+                </h1>
+
+                {/* Description */}
+                <p className="text-gray-600 text-sm mb-6 leading-relaxed text-center">
+                    Nhập mã PIN 6 số mà bạn đã thiết lập để đăng nhập tài khoản.
+                </p>
+
+                {/* Error Message */}
+                {errorMessage && (
+                    <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm mb-6">
+                        {errorMessage}
+                    </div>
+                )}
+
+                {/* PIN Input Boxes */}
+                <div className="flex justify-center gap-3 mb-6">
+                    {/* Hidden input for PIN entry */}
+                    <input
+                        type="text"
+                        maxLength={6}
+                        inputMode="numeric"
+                        value={pin}
+                        onChange={(e) => {
+                            const value = e.target.value.replace(/\D/g, "").slice(0, 6);
+                            setPin(value);
+                        }}
+                        style={{
+                            position: "absolute",
+                            opacity: 0,
+                            width: 0,
+                            height: 0,
+                        }}
+                        autoFocus
+                    />
+                    {/* Display boxes */}
+                    {[0, 1, 2, 3, 4, 5].map((index) => (
+                        <div
+                            key={index}
+                            onClick={() => {
+                                const input = document.querySelector(
+                                    'input[style*="opacity: 0"]'
+                                ) as HTMLInputElement;
+                                input?.focus();
+                            }}
+                            className="w-12 h-12 flex items-center justify-center text-lg font-black rounded-2xl bg-white border-2 border-[#176a21] cursor-pointer hover:bg-green-50 hover:border-[#115018] transition text-gray-900"
+                        >
+                            {pin[index] ? "•" : ""}
+                        </div>
+                    ))}
+                </div>
+
+                {/* Number Pad */}
+                <div className="flex-1 flex flex-col justify-center">
+                    <div className="grid grid-cols-3 gap-4 mb-6">
+                        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
+                            <button
+                                key={num}
+                                onClick={() => handlePinNum(String(num))}
+                                className="py-3 bg-white text-lg font-normal text-gray-900 rounded-xl border border-gray-300 hover:bg-gray-50 transition"
+                            >
+                                {num}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Bottom Row: 0 and Delete */}
+                    <div className="grid grid-cols-3 gap-4">
+                        <div></div>
+                        <button
+                            onClick={() => handlePinNum("0")}
+                            className="py-3 bg-white text-lg font-normal text-gray-900 rounded-xl border border-gray-300 hover:bg-gray-50 transition"
+                        >
+                            0
+                        </button>
+                        <button
+                            onClick={handlePinDelete}
+                            className="py-3 bg-white text-lg font-bold text-red-600 rounded-xl border border-gray-300 hover:bg-gray-50 transition flex items-center justify-center"
+                        >
+                            ✕
+                        </button>
+                    </div>
+                </div>
+
+                {/* Submit Button */}
+                <button
+                    onClick={handlePinSubmit}
+                    disabled={pin.length !== 6 || isLoading}
+                    className="w-full py-4 bg-[#176a21] text-white font-semibold rounded-full hover:bg-[#115018] transition disabled:opacity-40"
+                >
+                    {isLoading ? "Đang xác thực..." : "Đăng nhập"}
+                </button>
+            </div>
+        </div>
+    );
+}

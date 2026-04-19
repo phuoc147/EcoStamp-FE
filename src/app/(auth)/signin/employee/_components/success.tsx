@@ -9,19 +9,19 @@ interface SuccessProps {
 
 export default function SuccessPage({ onHome }: SuccessProps) {
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="flex flex-col flex-1 p-6 lg:p-12 bg-[#f2f9ea]"
+      className="flex flex-col flex-1 p-4 lg:p-12 bg-[#f2f9ea]"
     >
       {/* 1. Header ẩn trên Desktop (vì đã có Logo/Tên ở layout chung) */}
-      <header className="lg:hidden flex items-center justify-center mb-8">
-        <h1 className="font-bold text-lg text-[#176a21]">Trạm xanh</h1>
+      <header className="lg:hidden flex items-center justify-center mb-6">
+        <h1 className="font-bold text-base text-[#176a21]">Trạm xanh</h1>
       </header>
 
       {/* 2. Layout Grid: 1 cột trên Mobile, 2 cột trên Desktop (lg) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center flex-1">
-        
+
         {/* Cột trái: Biểu tượng minh họa & Trạng thái */}
         <div className="flex flex-col items-center justify-center">
           <div className="relative mb-6">
@@ -31,7 +31,7 @@ export default function SuccessPage({ onHome }: SuccessProps) {
               <div className="flex flex-col items-center gap-2">
                 <Clock size={56} className="text-[#176a21] lg:w-20 lg:h-20" strokeWidth={1.5} />
                 <div className="w-10 h-1 bg-[#176a21]/20 rounded-full">
-                  <motion.div 
+                  <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: "65%" }}
                     className="h-full bg-[#176a21] rounded-full"
@@ -54,7 +54,7 @@ export default function SuccessPage({ onHome }: SuccessProps) {
           <h2 className="text-3xl lg:text-5xl font-black mb-4 text-[#2a3127] leading-tight">
             Đăng ký thành công!
           </h2>
-          
+
           <p className="text-gray-500 font-medium leading-relaxed mb-8 text-sm lg:text-base">
             Tài khoản của bạn đang được xét duyệt. Chúng tôi sẽ thông báo cho bạn ngay khi có kết quả <span className="text-[#176a21] font-bold">(thường trong vòng 24h)</span>.
           </p>
@@ -86,7 +86,7 @@ export default function SuccessPage({ onHome }: SuccessProps) {
             </div>
           </div>
 
-          <button 
+          <button
             onClick={onHome}
             className="w-full lg:max-w-xs bg-[#176a21] text-white font-bold py-4 lg:py-5 rounded-2xl lg:rounded-3xl flex items-center justify-center gap-3 shadow-lg hover:bg-[#115018] transition-all active:scale-95 shadow-green-900/10"
           >

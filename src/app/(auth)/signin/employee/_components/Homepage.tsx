@@ -10,7 +10,7 @@ interface StepProps {
 
 export default function Homepage({ onNext, onBack }: StepProps) {
     return (
-        <div className="w-full bg-[#f5f7f3] p-6 shadow-md">
+        <div className="w-full bg-[#f5f7f3] p-4 shadow-md">
             {/* Header */}
             <div className="flex items-center gap-2 mb-6">
                 <span className="text-green-700 hover:opacity-70 cursor-pointer">←</span>

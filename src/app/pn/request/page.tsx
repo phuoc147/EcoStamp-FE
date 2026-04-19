@@ -5,7 +5,7 @@ import Head from 'next/head';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 
 // Components
-import Header from '../../../components/ConsumerHeader';
+import Header from '../../../components/PartnerHeader';
 import BottomBar from '../../../components/BottomBars';
 import SuccessAlert from './_components/SuccessAlert';
 import RequestBanner from './_components/RequestBanner';
@@ -33,74 +33,78 @@ export default function CreateRequest() {
   };
 
   return (
-    <div className={`${plusJakarta.className} min-h-screen bg-[#f4faec] pb-24 font-sans text-gray-800 flex justify-center`}>
+    <div className={`${plusJakarta.className} w-full h-screen bg-[#f4faec] font-sans text-gray-800 flex flex-col overflow-hidden`}>
       <Head>
         <title>Tạo Yêu Cầu Vận Chuyển</title>
       </Head>
 
-      <div className="w-full max-w-md bg-[#f4faec] min-h-screen shadow-lg relative overflow-x-hidden flex flex-col pt-20">
-        {/* Nhớ dùng ConsumerHeader của bạn, giả sử tên là Header */}
+      {/* Fixed Header */}
+      <div className="shrink-0 z-40 bg-[#f4faec]">
         <Header />
+      </div>
 
-        <main className="flex-1">
-          {/* Component: Cảnh báo thành công */}
-          {showAlert && (
-            <SuccessAlert 
-              code="#EVG-8821" 
-              onClose={() => setShowAlert(false)} 
-            />
-          )}
+      {/* Scrollable Content */}
+      <main className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide px-5 py-4">
+        {/* Component: Cảnh báo thành công */}
+        {showAlert && (
+          <SuccessAlert
+            code="#EVG-8821"
+            onClose={() => setShowAlert(false)}
+          />
+        )}
 
-          {/* Component: Banner hình ảnh */}
-          <RequestBanner />
+        {/* Component: Banner hình ảnh */}
+        <RequestBanner />
 
-          {/* Tiêu đề */}
-          <div className="px-5 mt-8 mb-6">
-            <h1 className="text-[32px] font-extrabold text-[#1c3f25] leading-[1.1]">
-              Tạo Yêu Cầu<br />
-              <span className="text-[#267a32] italic">Vận Chuyển Mới</span>
-            </h1>
-            <p className="text-[11px] text-gray-500 mt-3 leading-relaxed pr-4">
-              Cùng nhau xây dựng môi trường bền vững. Vui lòng cung cấp chi tiết loại phế liệu để chúng tôi sắp xếp nhân sự phù hợp nhất.
-            </p>
-          </div>
+        {/* Tiêu đề */}
+        <div className="mt-8 mb-6">
+          <h1 className="text-[32px] font-extrabold text-[#1c3f25] leading-[1.1]">
+            Tạo Yêu Cầu<br />
+            <span className="text-[#267a32] italic">Vận Chuyển Mới</span>
+          </h1>
+          <p className="text-[11px] text-gray-500 mt-3 leading-relaxed pr-4">
+            Cùng nhau xây dựng môi trường bền vững. Vui lòng cung cấp chi tiết loại phế liệu để chúng tôi sắp xếp nhân sự phù hợp nhất.
+          </p>
+        </div>
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="mx-5 bg-[#eef6e6] rounded-4xl p-6 mb-6 shadow-sm">
-            
-            {/* Component: Bước 1 - Chọn loại rác */}
-            <WasteSelection 
-              selectedType={selectedType}
-              onChangeType={setSelectedType}
-              weight={weight}
-              onChangeWeight={setWeight}
-            />
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="bg-[#eef6e6] rounded-4xl p-6 mb-6 shadow-sm">
 
-            {/* Component: Bước 2 - Chọn địa điểm & thời gian */}
-            <ScheduleLocation 
-              date={date}
-              onChangeDate={setDate}
-              timeSlot={timeSlot}
-              onChangeTimeSlot={setTimeSlot}
-              address="264 Lý Thường Kiệt, Phường 14, Quận 10, Thành phố Hồ Chí Minh"
-            />
+          {/* Component: Bước 1 - Chọn loại rác */}
+          <WasteSelection
+            selectedType={selectedType}
+            onChangeType={setSelectedType}
+            weight={weight}
+            onChangeWeight={setWeight}
+          />
 
-            {/* Nút Submit */}
-            <button 
-              type="submit"
-              className="w-full bg-[#1b5e20] text-white font-bold py-4 rounded-full text-sm shadow-md hover:bg-[#144718] transition-colors"
-            >
-              Gửi yêu cầu thu gom
-            </button>
-            
-            <p className="text-[8px] text-center text-gray-400 mt-4 px-4 leading-relaxed">
-              Bằng cách nhấn gửi, bạn đồng ý với Điều khoản dịch vụ môi trường của chúng tôi.
-            </p>
+          {/* Component: Bước 2 - Chọn địa điểm & thời gian */}
+          <ScheduleLocation
+            date={date}
+            onChangeDate={setDate}
+            timeSlot={timeSlot}
+            onChangeTimeSlot={setTimeSlot}
+            address="264 Lý Thường Kiệt, Phường 14, Quận 10, Thành phố Hồ Chí Minh"
+          />
 
-          </form>
-        </main>
+          {/* Nút Submit */}
+          <button
+            type="submit"
+            className="w-full bg-[#1b5e20] text-white font-bold py-4 rounded-full text-sm shadow-md hover:bg-[#144718] transition-colors"
+          >
+            Gửi yêu cầu thu gom
+          </button>
 
-        <BottomBar role="consumer" />
+          <p className="text-[8px] text-center text-gray-400 mt-4 px-4 leading-relaxed">
+            Bằng cách nhấn gửi, bạn đồng ý với Điều khoản dịch vụ môi trường của chúng tôi.
+          </p>
+
+        </form>
+      </main>
+
+      {/* Fixed Bottom Bar */}
+      <div className="shrink-0 z-40 bg-[#f4faec]">
+        <BottomBar role="partner" />
       </div>
     </div>
   );
