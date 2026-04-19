@@ -87,17 +87,28 @@ export default function ChooseStationPage({ onNext, onBack }: StepProps) {
             <div>
               <p className="text-xs font-bold text-gray-600 uppercase mb-2">Mặt trước CCCD</p>
               <label className="block border-2 border-dashed border-gray-400 rounded-2xl p-8 text-center cursor-pointer hover:bg-gray-50 transition">
-                <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 bg-[#e8f0e2] rounded-full flex items-center justify-center mb-2">
-                    <Upload size={32} className="text-green-600" />
+                {formData.idFrontImage ? (
+                  <div className="flex flex-col items-center">
+                    <img
+                      src={formData.idFrontImage}
+                      alt="ID Front Preview"
+                      className="w-full h-40 object-cover rounded-lg mb-2"
+                    />
+                    <p className="text-green-600 text-sm">✓ Đã tải lên - Nhấn để thay đổi</p>
                   </div>
-                  <p className="text-gray-900 font-medium mb-1">
-                    Nhấn để tải lên hoặc kéo ảnh
-                  </p>
-                  <p className="text-xs text-gray-600">
-                    PNG, JPG tối đa 10MB
-                  </p>
-                </div>
+                ) : (
+                  <div className="flex flex-col items-center">
+                    <div className="w-16 h-16 bg-[#e8f0e2] rounded-full flex items-center justify-center mb-2">
+                      <Upload size={32} className="text-green-600" />
+                    </div>
+                    <p className="text-gray-900 font-medium mb-1">
+                      Nhấn để tải lên hoặc kéo ảnh
+                    </p>
+                    <p className="text-xs text-gray-600">
+                      PNG, JPG tối đa 10MB
+                    </p>
+                  </div>
+                )}
                 <input
                   type="file"
                   accept="image/*,.pdf"
@@ -108,26 +119,34 @@ export default function ChooseStationPage({ onNext, onBack }: StepProps) {
                   className="hidden"
                 />
               </label>
-              {formData.idFrontImage && (
-                <p className="text-green-600 text-sm mt-2">✓ Đã tải lên</p>
-              )}
             </div>
 
             {/* Back ID Card */}
             <div>
               <p className="text-xs font-bold text-gray-600 uppercase mb-2">Mặt sau CCCD</p>
               <label className="block border-2 border-dashed border-gray-400 rounded-2xl p-8 text-center cursor-pointer hover:bg-gray-50 transition">
-                <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 bg-[#e8f0e2] rounded-full flex items-center justify-center mb-3">
-                    <Upload size={32} className="text-green-600" />
+                {formData.idBackImage ? (
+                  <div className="flex flex-col items-center">
+                    <img
+                      src={formData.idBackImage}
+                      alt="ID Back Preview"
+                      className="w-full h-40 object-cover rounded-lg mb-2"
+                    />
+                    <p className="text-green-600 text-sm">✓ Đã tải lên - Nhấn để thay đổi</p>
                   </div>
-                  <p className="text-gray-900 font-medium mb-1">
-                    Nhấn để tải lên hoặc kéo ảnh
-                  </p>
-                  <p className="text-xs text-gray-600">
-                    PNG, JPG tối đa 10MB
-                  </p>
-                </div>
+                ) : (
+                  <div className="flex flex-col items-center">
+                    <div className="w-16 h-16 bg-[#e8f0e2] rounded-full flex items-center justify-center mb-3">
+                      <Upload size={32} className="text-green-600" />
+                    </div>
+                    <p className="text-gray-900 font-medium mb-1">
+                      Nhấn để tải lên hoặc kéo ảnh
+                    </p>
+                    <p className="text-xs text-gray-600">
+                      PNG, JPG tối đa 10MB
+                    </p>
+                  </div>
+                )}
                 <input
                   type="file"
                   accept="image/*,.pdf"
@@ -138,9 +157,6 @@ export default function ChooseStationPage({ onNext, onBack }: StepProps) {
                   className="hidden"
                 />
               </label>
-              {formData.idBackImage && (
-                <p className="text-green-600 text-sm mt-2">✓ Đã tải lên</p>
-              )}
             </div>
           </div>
 
