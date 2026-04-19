@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import "./Profile.css";
-import { useLang } from "../../i18n/LangContext";
+import { useLang } from "@/src/i18n/LangContext";
 
 // ─── Mock data (thay bằng API thật sau) ──────────────────────
 const USER = {

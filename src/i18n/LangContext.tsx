@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useContext, useState, type ReactNode } from "react";
-import { langs, type Lang, type Translations } from "./Langs";
+import { langs, type Lang, type Translations } from "./langs";
 
 type LangContextValue = {
   t: Translations;

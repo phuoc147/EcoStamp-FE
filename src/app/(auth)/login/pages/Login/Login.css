@@ -1,0 +1,313 @@
+/*
+ * Login.css — style đồng bộ với Profile
+ * Tokens: --green-main #176a21, card border-radius 20px, clean inputs
+ */
+ @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+ 
+:root {
+  --green-main:  #176a21;
+  --green-dark:  #0f4d18;
+  --green-light: #9df197;
+  --green-muted: #ebf3e3;
+  --green-bg:    #e8f5e9;
+  --text-dark:   #111111; 
+  --text-muted:  #575e52;
+  --border:      #e2ebda;
+  --card-bg:     #ebf3e3; 
+  --error-red:   #dc2626;
+}
+ 
+/* ── LAYOUT ─────────────────────────────────────────────────── */
+.login-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+}
+ 
+/* ── CARD — border-radius 20px như Profile ───────────────────── */
+.login-card {
+  width: 100%;
+  max-width: 600px;
+  max-height: 600px;
+  background: var(--card-bg);
+  padding: 36px 28px 28px;
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(23, 106, 33, 0.12), 0 1px 4px rgba(23, 106, 33, 0.06);
+  position: relative;
+  border: 1.5px solid var(--border);
+  overflow: visible;
+  z-index: 1;
+}
+
+.login-card > *:not(.cloud-toggle) {
+  position: relative;
+  z-index: 1;
+}
+ 
+/* ── CLOUD TOGGLE ────────────────────────────────────────────── */
+.cloud-toggle {
+  position: absolute;
+  top: -2px;
+  left: 12px;
+  width: 68px;
+  height: 44px;
+  cursor: pointer;
+  filter: drop-shadow(0 2px 6px rgba(23, 106, 33, 0.18));
+  transition: filter 0.2s, transform 0.2s;
+  z-index: 5;
+}
+.cloud-toggle:hover {
+  filter: drop-shadow(0 3px 8px rgba(23, 106, 33, 0.28));
+  transform: translateY(-1px);
+}
+.cloud { position: relative; width: 100%; height: 100%; z-index: 10;}
+.cloud-part {
+  position: absolute;
+  background: rgba(242, 249, 234, 0.95);
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+}
+.c1 { width: 26px; height: 26px; left: 4px;  top: 12px; }
+.c2 { width: 34px; height: 34px; left: 16px; top: 4px; }
+.c3 { width: 28px; height: 28px; right: 2px; top: 10px; }
+.cloud-text {
+  position: absolute;
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--green-main);
+  letter-spacing: 0.03em;
+}
+ 
+/* ── LOGIN HEADER — icon + title luôn cùng dòng, không chạm cloud ── */
+.login-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 8px;
+  margin-top: 10px;   /* đẩy xuống dưới cloud (top:-2px, height:44px) */
+  margin-bottom: 8px;
+}
+
+.login-header h2 {
+  margin: 0;
+  color: var(--text-dark);
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  line-height: 1.2;      /* thêm dòng này để chữ có chiều cao ổn định */
+  display: flex;          /* giúp căn giữa nội dung bên trong */
+  align-items: center;
+}
+
+/* ── TITLE ───────────────────────────────────────────────────── */
+.login-card h2 {
+  text-align: center;
+  margin: 0;           /* reset hoàn toàn, không để margin-top kéo xuống dòng */
+  color: var(--text-dark);
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+ 
+/* ── FIELD GROUP ─────────────────────────────────────────────── */
+.field-group {
+  margin-bottom: 16px;
+  color: var(--bg-stone-600);
+}
+ 
+.field-group label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #775346;;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  letter-spacing: -0.01em;
+}
+ 
+/* ── INPUT WRAP ──────────────────────────────────────────────── */
+.input-wrap {
+  position: relative;
+}
+ 
+/* ── INPUT — clean style như Profile cards ───────────────────── */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  height: 44px;
+  padding: 0 40px 0 14px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border); 
+  font-size: 0.93rem;
+  font-family: inherit;
+  transition: all 0.25s ease;
+  background: #ebf3e3; 
+  color: var(--text-dark);
+}
+ 
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: #b0bcb0;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border: 1.5px solid #111111; /* đảm bảo override */
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.08);
+}
+ 
+/* ── EYE BUTTON ──────────────────────────────────────────────── */
+.eye-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0;
+  color: var(--text-muted);
+  z-index: 2;
+  width: auto;
+  height: auto;
+}
+ 
+/* ── INLINE ERROR ────────────────────────────────────────────── */
+.inline-error {
+  font-size: 0.73rem;
+  color: white;
+  background: var(--error-red);
+  font-weight: 600;
+  margin-top: 5px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(220, 38, 38, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  animation: errSlide 0.2s ease;
+}
+ 
+@keyframes errSlide {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: none; }
+}
+ 
+/* ── LOGIN BUTTON — style như Profile logout btn ─────────────── */
+.login-btn {
+  width: 100%;
+  height: 46px;
+  background: var(--green-main);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  margin-top: 8px;
+  box-shadow: 0 4px 14px rgba(23, 106, 33, 0.28);
+}
+.login-btn:hover {
+  background: var(--green-dark);
+  box-shadow: 0 6px 18px rgba(23, 106, 33, 0.36);
+}
+ 
+/* ── SWITCH LINK ─────────────────────────────────────────────── */
+.switch {
+  margin-top: 18px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+.switch span {
+  color: var(--green-main);
+  cursor: pointer;
+  font-weight: 700;
+  margin-left: 4px;
+}
+.switch span:hover { text-decoration: underline; }
+
+.input-wrap select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  background: #e7efe3;
+  color: #2a3127;
+  font-size: 1rem;
+  appearance: none;
+  cursor: pointer;
+}
+
+.input-wrap select:focus {
+  border: 1.5px solid #111111;
+  background: #f6fbf4;
+}
+
+/* ── WHITE GROUP CARD ───────────────────────── */
+.form-group-card {
+  background: white;
+  border-radius: 16px;
+  padding: 18px 16px 14px;
+  margin-bottom: 14px;
+  border: 1.5px solid var(--border);
+}
+
+/* ── ROLE BUTTONS (BOTTOM) ─────────────────── */
+.role-buttons-bottom {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.role-btn {
+  flex: 1;
+  height: 36px;
+  border-radius: 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+  /* inactive: nền trắng nhẹ, chữ xanh, viền mỏng */
+  background: white;
+  color: var(--green-main);
+  border: 1.5px solid var(--border);
+}
+
+.role-btn:hover:not(.role-btn--active) {
+  background: var(--green-muted);
+  border-color: #b6d4aa;
+}
+
+/* active: nền xanh, chữ trắng */
+.role-btn--active {
+  background: var(--green-main);
+  color: white;
+  border-color: var(--green-main);
+  box-shadow: 0 3px 10px rgba(23, 106, 33, 0.25);
+}
