@@ -95,9 +95,9 @@ export default function Login() {
                   <option value="" disabled>
                     {t.chooseRole}
                   </option>
-                  <option value="user">{t.user}</option>
+                  <option value="consumer">{t.user}</option>
                   <option value="partner">{t.partner}</option>
-                  <option value="staff">{t.staff}</option>
+                  <option value="employee">{t.staff}</option>
                 </select>
               </div>
             </div>
@@ -153,9 +153,7 @@ export default function Login() {
 
         <p className="switch">
           {t.noAccount}{" "}
-          <span onClick={() => router.push("/login/pages/Role")}>
-            {t.signUp}
-          </span>
+          <span onClick={() => router.push("/role")}>{t.signUp}</span>
         </p>
       </div>
     </div>

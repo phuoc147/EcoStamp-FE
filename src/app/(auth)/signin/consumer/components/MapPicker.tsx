@@ -1,3 +1,4 @@
+"use client";
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import { useState } from "react";
 

@@ -4,11 +4,6 @@ import { useReducer, useState, useEffect, useRef } from "react";
 import "./Register.css";
 import { useLang } from "@/src/i18n/LangContext";
 import type { Translations } from "@/src/i18n/langs";
-import maleAvatar from "../../assets/male.jpg";
-import femaleAvatar from "../../assets/female.jpg";
-import otherAvatar from "../../assets/other.jpg";
-const iconUrl = "/marker-icon.png";
-const shadowUrl = "/marker-shadow.png";
 import "leaflet/dist/leaflet.css";
 import { useAutoLocation } from "../../hooks/useAutoLocation";
 import { useLocationCtx } from "../../context/LocationContext";
@@ -23,6 +18,7 @@ type FormState = {
   phone: string;
   address: string;
 };
+
 type Action = { type: "UPDATE_FIELD"; field: keyof FormState; value: string };
 
 const formReducer = (state: FormState, action: Action): FormState => {
@@ -60,12 +56,6 @@ const validate = (form: FormState, m: Translations) => {
   if (!form.address) errors.address = m.fieldRequired;
 
   return errors;
-};
-
-const defaultAvatars = {
-  male: maleAvatar,
-  female: femaleAvatar,
-  other: otherAvatar,
 };
 
 function buildAddressFromNominatim(address: any) {
@@ -133,14 +123,16 @@ function SunRing() {
         const a = toRad(angle),
           aL = toRad(angle - 90),
           aR = toRad(angle + 90);
-        const x1 = cx + innerR * Math.cos(a) + hIn * Math.cos(aL),
-          y1 = cy + innerR * Math.sin(a) + hIn * Math.sin(aL);
-        const x2 = cx + innerR * Math.cos(a) + hIn * Math.cos(aR),
-          y2 = cy + innerR * Math.sin(a) + hIn * Math.sin(aR);
-        const x3 = cx + outerR * Math.cos(a) + hOut * Math.cos(aR),
-          y3 = cy + outerR * Math.sin(a) + hOut * Math.sin(aR);
-        const x4 = cx + outerR * Math.cos(a) + hOut * Math.cos(aL),
-          y4 = cy + outerR * Math.sin(a) + hOut * Math.sin(aL);
+        const round = (n: number) => Math.round(n * 1000) / 1000; // thêm dòng này
+
+        const x1 = round(cx + innerR * Math.cos(a) + hIn * Math.cos(aL)),
+          y1 = round(cy + innerR * Math.sin(a) + hIn * Math.sin(aL));
+        const x2 = round(cx + innerR * Math.cos(a) + hIn * Math.cos(aR)),
+          y2 = round(cy + innerR * Math.sin(a) + hIn * Math.sin(aR));
+        const x3 = round(cx + outerR * Math.cos(a) + hOut * Math.cos(aR)),
+          y3 = round(cy + outerR * Math.sin(a) + hOut * Math.sin(aR));
+        const x4 = round(cx + outerR * Math.cos(a) + hOut * Math.cos(aL)),
+          y4 = round(cy + outerR * Math.sin(a) + hOut * Math.sin(aL));
         return (
           <polygon
             key={i}
@@ -373,7 +365,7 @@ export default function Register() {
   if (submitted) return <SuccessScreen />;
 
   return (
-    <div className={`container`}>
+    <div className={`register-container`}>
       <div className="card">
         <WeatherWidget />
         <div className="cloud-toggle" onClick={toggle}>
@@ -392,6 +384,7 @@ export default function Register() {
             alignItems: "center",
             justifyContent: "center",
             gap: "8px",
+            color: "#2e7d32",
           }}
         >
           <span
@@ -400,7 +393,7 @@ export default function Register() {
           >
             eco
           </span>
-          <h2 style={{ margin: 0 }}>{t.title}</h2>
+          <h2 style={{ margin: 0, color: "#2e7d32" }}>{t.title}</h2>
         </div>
 
         {/* Avatar */}
@@ -411,7 +404,13 @@ export default function Register() {
             onClick={() => fileRef.current?.click()}
           >
             <img
-              src={avatar ?? defaultAvatars[gender]}
+              src={
+                gender === "male"
+                  ? "/icons/male.jpg"
+                  : gender === "female"
+                    ? "/icons/female.jpg"
+                    : "/icons/other.jpg" // ← đổi trans.png thành other.jpg cho khớp tên file
+              }
               className="avatar-img"
               alt={t.avatarAlt}
             />
@@ -440,10 +439,10 @@ export default function Register() {
               <img
                 src={
                   g === "male"
-                    ? "/icons/male.png"
+                    ? "/icons/maleIcon.png"
                     : g === "female"
-                      ? "/icons/female.png"
-                      : "/icons/trans.png"
+                      ? "/icons/femaleIcon.png"
+                      : "/icons/transIcon.png"
                 }
                 alt="gender"
                 style={{ width: 16, height: 16 }}

@@ -1,52 +1,38 @@
-"use client"; // ← bắt buộc vì có useState, leaflet
+"use client";
 
-import { useReducer, useState, useEffect, useRef } from "react";
-import "./Register.css";
-import { useLang } from "@/src/i18n/LangContext";
-import type { Translations } from "@/src/i18n/langs"; // ← từ langs, không phải LangContext
-import maleAvatar from "@/src/assets/male.jpg";
-import femaleAvatar from "@/src/assets/female.jpg";
-import otherAvatar from "@/src/assets/other.jpg";
-import L from "leaflet";
-const markerIcon = "/placeholder.png";
-const iconUrl = "/marker-icon.png";
-const shadowUrl = "/marker-shadow.png";
+import "./Map.css";
 import "leaflet/dist/leaflet.css";
-import { useAutoLocation } from "../../hooks/useAutoLocation";
-import { useLocationCtx } from "../../context/LocationContext";
-import WeatherWidget from "../../components/WeatherWidget";
-import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMapEvents,
+} from "react-leaflet";
+import MarkerClusterGroup from "react-leaflet-cluster";
+import { Icon, divIcon, point } from "leaflet";
 
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-
-L.Icon.Default.mergeOptions({
-  iconUrl: markerIcon,
-  iconRetinaUrl: markerIcon,
-});
-
+// ── Icon dùng CDN, tránh lỗi Leaflet SSR ──────────────────────
 const customIcon = new Icon({
-  iconUrl: markerIcon,
-  iconSize: [38, 38],
-  iconAnchor: [19, 38],
-  popupAnchor: [0, -38],
+  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
 });
 
-const createClusterCustomIcon = (cluster: any) => {
-  return divIcon({
+const createClusterCustomIcon = (cluster: any) =>
+  divIcon({
     html: `<span class="cluster-icon">${cluster.getChildCount()}</span>`,
     className: "custom-marker-cluster",
     iconSize: point(33, 33, true),
   });
-};
 
-type MarkerType = {
-  geocode: [number, number];
-  popUp: string;
-};
-
+type MarkerType = { geocode: [number, number]; popUp: string };
 type MapProps = {
   onSelectLocation?: (lat: number, lng: number) => void;
-  markers?: MarkerType[]; // backend truyền vào sau
+  markers?: MarkerType[];
 };
 
 function UserLocator() {
@@ -55,17 +41,14 @@ function UserLocator() {
       map.flyTo(e.latlng, 15);
     },
   });
-
   useEffect(() => {
     map.locate({ setView: false, maxZoom: 15 });
   }, [map]);
-
   return null;
 }
 
 function LocationMarker({ onSelectLocation }: any) {
   const [position, setPosition] = useState<[number, number] | null>(null);
-
   useMapEvents({
     click(e) {
       const { lat, lng } = e.latlng;
@@ -73,19 +56,18 @@ function LocationMarker({ onSelectLocation }: any) {
       onSelectLocation?.(lat, lng);
     },
   });
-
   return position ? <Marker position={position} icon={customIcon} /> : null;
 }
 
-function Map({ onSelectLocation, markers = [] }: MapProps) {
+export default function Map({ onSelectLocation, markers = [] }: MapProps) {
   return (
     <div className="map-wrapper">
       <MapContainer
         center={[10.7769, 106.7009]}
         zoom={13}
         style={{ height: "100%", width: "100%" }}
-        dragging={true}
-        scrollWheelZoom={true}
+        dragging
+        scrollWheelZoom
       >
         <TileLayer
           attribution="&copy; OpenStreetMap contributors"
@@ -97,8 +79,8 @@ function Map({ onSelectLocation, markers = [] }: MapProps) {
           chunkedLoading
           iconCreateFunction={createClusterCustomIcon}
         >
-          {markers.map((marker, index) => (
-            <Marker key={index} position={marker.geocode} icon={customIcon}>
+          {markers.map((marker, i) => (
+            <Marker key={i} position={marker.geocode} icon={customIcon}>
               <Popup>{marker.popUp}</Popup>
             </Marker>
           ))}
@@ -107,5 +89,3 @@ function Map({ onSelectLocation, markers = [] }: MapProps) {
     </div>
   );
 }
-
-export default Map;

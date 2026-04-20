@@ -1,4 +1,4 @@
-@import 'material-symbols/outlined';
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
 * {
   margin: 0;
   padding: 0;
@@ -24,36 +24,34 @@ html, body, #root {
   --text-dark:    #2a3127;
   --text-muted:   #575e52;
   --border:       #e2ebda;
-  --card-bg:      #72796D;;
+  --card-bg: rgba(255, 255, 255, 0.96);
 }
 
 /* ===== LAYOUT ===== */
-.container {
+.register-container {
   width: 100%;
   min-height: 100dvh; 
   max-width: none;
-  display: block;
+  display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
   background-attachment: fixed;
-  padding: 0;
+  padding: 20px;
 }
 
 /* ===== CARD ===== */
 .card {
   width: 100%;
-  min-height: 100%; 
-  max-width: none;
-  background: #ebf3e3;
+  max-width: 420px;        /* ← thêm max-width */
+  background: rgba(255, 255, 255, 0.96);  /* ← đổi từ #ebf3e3 */
   padding: 28px;
-  border-radius: 0;
-  box-shadow: 0 4px 24px rgba(23, 106, 33, 0.12), 0 1px 4px rgba(23, 106, 33, 0.06);
+  border-radius: 20px;     /* ← đổi từ 0 */
+  box-shadow: 0 4px 24px rgba(23, 106, 33, 0.12);
   position: relative;
-  border: 2px solid #c8e6c9;
+  border: 1.5px solid #e2ebda;
   overflow: visible;
-  z-index: 0;
-  box-sizing: border-box;
+  z-index: 1;
   padding-top: 70px;
 }
 
@@ -397,6 +395,10 @@ button[type="submit"]:hover:not(:disabled) {
   margin-bottom: 12px;
   color: var(--green-main);
   font-size: 1.25rem;
+  font-size: 1.4rem;
+  font-weight: 900 ;
+  letter-spacing: -0.02em ;
+  line-height: 1.2 ;
 }
 
 /* ===== WEATHER ===== */
