@@ -1,3 +1,5 @@
-export default function SignInConsumerPage() {
-  return <div className="p-6">Sign In Consumer Page</div>;
+import dynamic from "next/dynamic";
+import Register from "./pages/Register/Register";
+export default function Page() {
+  return <Register />;
 }
