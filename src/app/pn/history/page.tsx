@@ -76,6 +76,15 @@ export default function HistoryPage() {
         },
     ];
 
+    const filteredTransactions = transactions.filter(txn => {
+        const search = searchTerm.toLowerCase();
+        if (!search) return true;
+        return (
+            txn.customer.toLowerCase().includes(search) ||
+            txn.wasteType.toLowerCase().includes(search)
+        );
+    });
+
     return (
         <div className={`${plusJakarta.className} w-full h-full flex flex-col overflow-hidden bg-[#f4faec] font-sans text-gray-800`}>
             <Header />
@@ -225,15 +234,15 @@ export default function HistoryPage() {
                                 className="w-full bg-white text-[11px] pl-8 pr-3 py-2 rounded-full outline-none focus:ring-2 focus:ring-[#267a32]/30 shadow-sm"
                             />
                         </div>
-                        <button className="w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-400 hover:text-[#267a32] shadow-sm">
+                        {/* <button className="w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-400 hover:text-[#267a32] shadow-sm">
                             <Filter size={14} />
-                        </button>
+                        </button> */}
                     </div>
 
                     {/* Transaction List */}
                     <div className="space-y-3 mb-4">
-                        {transactions.map(txn => (
-                            <div key={txn.id} className="bg-white rounded-2xl p-4 shadow-sm">
+                        {filteredTransactions.map(txn => (
+                            <div key={txn.id} className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow">
                                 <div className="flex items-start gap-3">
                                     <div
                                         className="w-8 h-8 rounded-full flex items-center justify-center text-white text-[10px] font-bold shrink-0"
@@ -251,6 +260,12 @@ export default function HistoryPage() {
                                 </div>
                             </div>
                         ))}
+
+                        {filteredTransactions.length === 0 && (
+                            <div className="flex flex-col items-center py-5 opacity-40">
+                                <p className="text-xs font-bold italic">Không tìm thấy giao dịch</p>
+                            </div>
+                        )}
                     </div>
 
                     {/* View All Link */}

@@ -37,7 +37,7 @@ export default function MemberInfo({
     onBack,
 }: Step2Props) {
     return (
-        <div className="w-full bg-[#f5f7f3] min-h-screen flex flex-col">
+        <div className="w-full bg-[#f5f7f3] min-h-screen flex flex-col overflow-y-auto scrollbar-hide">
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 bg-[#f5f7f3]">
                 <span className="text-green-700 hover:opacity-70 cursor-pointer text-lg" onClick={onBack}>←</span>

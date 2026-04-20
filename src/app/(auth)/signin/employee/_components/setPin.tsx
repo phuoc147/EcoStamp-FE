@@ -2,6 +2,7 @@
 
 import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 interface StepProps {
   onNext: () => void;
@@ -38,29 +39,38 @@ export default function SetPinPage({ onNext, onBack }: StepProps) {
   return (
     <div className="w-full bg-[#f2f9ea] min-h-screen flex flex-col">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 bg-[#f2f9ea]">
-        <span className="text-[#176a21] hover:opacity-70 cursor-pointer text-lg" onClick={onBack}>←</span>
-        <span className="text-center text-sm font-semibold text-[#176a21]">
-          Đăng ký nhân viên
-        </span>
-        <div className="w-5"></div>
-      </div>
-
-      {/* Progress */}
-      <div className="px-4 py-3">
-        <p className="text-center text-sm font-medium text-gray-700 mb-3">
-          BƯỚC 2 / 2
-        </p>
-        <div className="w-full bg-gray-300 rounded-full h-2">
-          <div className="bg-[#176a21] h-2 rounded-full" style={{ width: '100%' }}></div>
-        </div>
-      </div>
+      <header className="flex items-center justify-between mb-6">
+        <button
+          onClick={onBack}
+          className="p-2 -ml-2 text-[#176a21] hover:bg-emerald-50 rounded-full transition-colors"
+        >
+          <ArrowLeft size={24} />
+        </button>
+        <h1 className="font-bold text-base text-[#176a21]">Đăng ký nhân viên</h1>
+        <div className="w-10" />
+      </header>      
 
       {/* Content */}
-      <div className="flex-1 px-4 pb-4 overflow-y-auto flex flex-col">
+      <div className="flex-1 px-4 pb-4 overflow-y-auto flex flex-col scrollbar-hide">
+        {/* Progress */}
+        <div className="flex flex-col justify-center items-center">
+          <div className="flex flex-col items-center mb-6">
+            <span className="text-[10px] font-bold text-gray-900 mb-2 uppercase tracking-widest">
+              BƯỚC 2 / 2
+            </span>
+            <div className="w-32 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+              <motion.div
+                initial={{ width: "0%" }}
+                animate={{ width: "100%" }}
+                className="h-full bg-[#176a21] rounded-full"
+              />
+            </div>
+          </div>
+        </div>
+
         {/* Title */}
         <h1 className="text-[28px] font-bold text-gray-900 mb-4 leading-tight text-center">
-          Thiết lập Mã PIN bảo mật
+          Thiết lập mã PIN bảo mật
         </h1>
 
         {/* Description */}
@@ -140,7 +150,7 @@ export default function SetPinPage({ onNext, onBack }: StepProps) {
         {/* Complete Button */}
         <button
           onClick={handleSubmit}
-          className="w-full py-4 bg-[#176a21] text-white font-semibold rounded-full hover:bg-[#115018] transition disabled:opacity-40"
+          className="w-full py-4 bg-[#176a21] text-white font-semibold rounded-full hover:bg-[#115018] transition disabled:opacity-40 mt-10"
           disabled={pin.length !== 6}
         >
           Hoàn tất thiết lập

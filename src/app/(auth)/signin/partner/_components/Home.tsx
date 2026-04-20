@@ -1,5 +1,7 @@
 "use client";
 
+import { ArrowLeft } from "lucide-react";
+
 interface StepProps {
     onNext: () => void;
     onBack: () => void;
@@ -7,10 +9,12 @@ interface StepProps {
 
 export default function Home({ onNext, onBack }: StepProps) {
     return (
-        <div className="w-full bg-[#f5f7f3] p-4 shadow-md">
+        <div className="w-full overflow-y-auto bg-[#f5f7f3] p-4 shadow-md scrollbar-hide">
             {/* Header */}
             <div className="flex items-center gap-2 mb-6">
-                <span className="text-green-700 hover:opacity-70 cursor-pointer" onClick={onBack}>←</span>
+                <button onClick={onBack} className="p-2 -ml-2 text-[#176a21] hover:bg-emerald-50 rounded-full transition">
+                    <ArrowLeft size={24} />
+                </button>
                 <span className="text-base font-semibold text-green-700">
                     EcoStamp
                 </span>

@@ -52,7 +52,7 @@ export default function StationInfo({ formData, handleInputChange, errorMessage,
             </div>
 
             {/* Content */}
-            <div className="flex-1 px-4 pb-4 overflow-y-auto">
+            <div className="flex-1 px-4 pb-4 overflow-y-auto scrollbar-hide">
                 {/* Title */}
                 <h1 className="text-[28px] font-bold text-gray-900 mb-4 leading-tight text-center">
                     Thông tin Trạm Xanh

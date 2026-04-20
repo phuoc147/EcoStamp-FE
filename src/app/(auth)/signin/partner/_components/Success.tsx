@@ -49,7 +49,7 @@ export default function Success({ onBack }: StepProps) {
             </div>
 
             {/* Content */}
-            <div className="flex-1 px-4 pb-4 overflow-y-auto flex flex-col">
+            <div className="flex-1 px-4 pb-4 overflow-y-auto flex flex-col scrollbar-hide">
                 {/* Clock Icon Animation */}
                 <div className="flex justify-center mb-4 mt-6">
                     <div className="relative w-28 h-28 bg-white rounded-3xl flex items-center justify-center shadow-lg">

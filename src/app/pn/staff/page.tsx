@@ -191,11 +191,16 @@ export default function StaffPage() {
                 </button>
               </div>
             ))}
+            {filteredStaff.length === 0 && (
+              <div className="flex flex-col items-center py-5 opacity-40">
+                <p className="text-xs font-bold italic">Không tìm thấy nhân sự</p>
+              </div>
+              )}
           </div>
 
           {/* Load More */}
           <button className="w-full mt-4 text-[#267a32] text-[11px] font-bold py-2">
-            Tải thêm ▼
+            Tải thêm 
           </button>
         </section>
       </main>

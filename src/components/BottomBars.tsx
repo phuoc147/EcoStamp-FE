@@ -24,9 +24,16 @@ function getTabs(role: Role): Tab[] {
     case "partner":
       return [
         { label: "Trang chủ", href: "/pn/dashboard", icon: "home" },
-        { label: "Nhân viên", href: "/pn/staff", icon: "people" },
+        { label: "Nhân sự", href: "/pn/staff", icon: "people" },
         { label: "Trạm xanh", href: "/pn/status", icon: "apartment" },
-        { label: "Thu gom", href: "/pn/request", icon: "history" },
+        { label: "Lịch sử", href: "/pn/history", icon: "history" },
+        { label: "Chiến dịch", href: "/pn/campaign", icon: "campaign" },
+      ];
+    case "employee":
+      return [
+        { label: "Trang chủ", href: "/pn/dashboard", icon: "home" },
+        { label: "Trạm xanh", href: "/pn/status", icon: "apartment" },
+        { label: "Lịch sử", href: "/pn/history", icon: "history" },
         { label: "Chiến dịch", href: "/pn/campaign", icon: "campaign" },
       ];
     default:
@@ -39,10 +46,7 @@ export default function BottomBar({ role }: { role: Role }) {
   const router = useRouter();
   const tabs = getTabs(role);
 
-  const activeIndex = Math.max(
-    0,
-    tabs.findIndex((t) => pathname === t.href || pathname.startsWith(t.href + "/"))
-  );
+  const activeIndex = tabs.findIndex((t) => pathname === t.href);
 
   return (
     /* Bottom nav cho mobile */

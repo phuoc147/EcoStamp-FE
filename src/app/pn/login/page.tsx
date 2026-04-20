@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -41,7 +42,9 @@ export default function PartnerLoginPage() {
         <div className="w-full bg-[#f5f7f3] min-h-screen flex flex-col">
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 bg-[#f5f7f3]">
-                <span className="text-[#176a21] hover:opacity-70 cursor-pointer text-lg" onClick={() => window.history.back()}>←</span>
+                <button onClick={() => window.history.back()} className="p-2 -ml-2 text-[#176a21] hover:bg-emerald-50 rounded-full transition">
+                    <ArrowLeft size={24} />
+                </button>
                 <span className="text-center text-sm font-semibold text-[#176a21]">
                     Đăng nhập Trạm Xanh
                 </span>
@@ -150,7 +153,7 @@ export default function PartnerLoginPage() {
                 <button
                     onClick={handlePinSubmit}
                     disabled={pin.length !== 6 || isLoading}
-                    className="w-full py-4 bg-[#176a21] text-white font-semibold rounded-full hover:bg-[#115018] transition disabled:opacity-40"
+                    className="w-full py-4 bg-[#176a21] text-white font-semibold rounded-full hover:bg-[#115018] transition disabled:opacity-40 mt-8"
                 >
                     {isLoading ? "Đang xác thực..." : "Đăng nhập"}
                 </button>

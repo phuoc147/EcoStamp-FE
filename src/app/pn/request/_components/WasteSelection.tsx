@@ -1,4 +1,4 @@
-import { GlassWater, FileText, Wrench } from 'lucide-react';
+import { GlassWater, FileText, Wrench, ShapesIcon } from 'lucide-react';
 
 interface WasteSelectionProps {
   selectedType: string;
@@ -36,6 +36,12 @@ export default function WasteSelection({ selectedType, onChangeType, weight, onC
           selected={selectedType === 'Kim loại'} 
           onClick={() => onChangeType('Kim loại')} 
         />
+        <WasteTypeCard
+          icon={<ShapesIcon size={20} />} 
+          label="khác" 
+          selected={selectedType === 'Khác'} 
+          onClick={() => onChangeType('Khác')} 
+        />
       </div>
 
       <div>
@@ -46,9 +52,9 @@ export default function WasteSelection({ selectedType, onChangeType, weight, onC
             value={weight}
             onChange={(e) => onChangeWeight(e.target.value)}
             placeholder="Ví dụ: 15"
-            className="w-full bg-[#e3ecd9] text-[#1c3f25] text-xs font-semibold rounded-xl py-3.5 px-4 outline-none focus:ring-2 focus:ring-[#267a32]/30 transition-all placeholder:text-gray-400 placeholder:font-medium"
+            className="w-full bg-[#e3ecd9] text-[#1c3f25] text-xs font-semibold rounded-xl py-3.5 pr-10 px-4 outline-none focus:ring-2 focus:ring-[#267a32]/30 transition-all placeholder:text-gray-400 placeholder:font-medium"
           />
-          <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-semibold text-gray-500">
+          <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-semibold text-gray-500 tracking-tighter">
             kg
           </span>
         </div>

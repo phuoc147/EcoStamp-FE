@@ -17,7 +17,6 @@ export default function CampaignPage() {
   const [discounts, setDiscounts] = useState([
     {
       id: 1,
-      icon: '🍵',
       name: 'Giảm 50K',
       desc: 'Giảm 50k cho các hóa đơn nước ấp trên 100k',
       status: 'ĐANG HOẠT ĐỘNG',
@@ -27,7 +26,6 @@ export default function CampaignPage() {
     },
     {
       id: 2,
-      icon: '🌲',
       name: 'Giảm 30%',
       desc: 'Giảm 30% cho tất cả sản phẩm tại quán',
       status: 'CÓ GIỚI HẠN',
@@ -51,7 +49,6 @@ export default function CampaignPage() {
     {
       id: 1,
       name: 'Green Hour',
-      emoji: '🌿',
       multiplier: 2.5,
       frequency: 'Thứ 6 hàng tuần',
       time: '14:00 - 17:00 PM',
@@ -61,7 +58,6 @@ export default function CampaignPage() {
     {
       id: 2,
       name: 'Eco Holiday',
-      emoji: '🎋',
       multiplier: 3.0,
       desc: 'Phân phối điểm thưởng và quà tặng đặc biệt nhân Ngày Trái Đất toàn cầu',
       status: 'SẮP DIỄN RA',
@@ -72,7 +68,6 @@ export default function CampaignPage() {
   const [editingEventId, setEditingEventId] = useState<number | null>(null);
   const [editEventForm, setEditEventForm] = useState({
     name: '',
-    emoji: '',
     multiplier: '',
     frequency: '',
     time: '',
@@ -85,7 +80,6 @@ export default function CampaignPage() {
     name: '',
     description: '',
     type: 'discount',
-    emoji: '',
     multiplier: '',
     quantity: '',
     expiryDate: '',
@@ -138,7 +132,6 @@ export default function CampaignPage() {
     const eventData = event as any;
     setEditEventForm({
       name: event.name,
-      emoji: event.emoji,
       multiplier: event.multiplier.toString(),
       frequency: eventData.frequency || '',
       time: eventData.time || '',
@@ -153,7 +146,6 @@ export default function CampaignPage() {
         const updatedEvent = {
           ...e,
           name: editEventForm.name,
-          emoji: editEventForm.emoji,
           multiplier: parseFloat(editEventForm.multiplier),
           status: editEventForm.status,
         } as any;
@@ -190,7 +182,6 @@ export default function CampaignPage() {
     if (newCampaignForm.type === 'discount') {
       const newDiscount = {
         id: discounts.length + 1,
-        icon: newCampaignForm.emoji || '🎁',
         name: newCampaignForm.name,
         desc: newCampaignForm.description,
         status: 'ĐANG HOẠT ĐỘNG',
@@ -203,7 +194,6 @@ export default function CampaignPage() {
       const newEvent = {
         id: events.length + 1,
         name: newCampaignForm.name,
-        emoji: newCampaignForm.emoji || '🎉',
         multiplier: parseFloat(newCampaignForm.multiplier) || 1,
         desc: newCampaignForm.description,
         status: 'ĐANG DIỄN RA',
@@ -215,7 +205,6 @@ export default function CampaignPage() {
       name: '',
       description: '',
       type: 'discount',
-      emoji: '',
       multiplier: '',
       quantity: '',
       expiryDate: '',
@@ -254,7 +243,7 @@ export default function CampaignPage() {
               : 'text-gray-500'
               }`}
           >
-            📋 Mã giảm giá
+            Mã giảm giá
           </button>
           <button
             onClick={() => setActiveTab('events')}
@@ -263,7 +252,7 @@ export default function CampaignPage() {
               : 'text-gray-500'
               }`}
           >
-            🎁 Sự kiện
+            Sự kiện
           </button>
         </div>
 
@@ -361,9 +350,6 @@ export default function CampaignPage() {
                   <div className="bg-white rounded-3xl p-4 shadow-sm">
                     {/* Top row with icon and title */}
                     <div className="flex items-start gap-3 mb-3">
-                      <div className="w-10 h-10 rounded-full bg-[#d4ecc8] flex items-center justify-center text-lg shrink-0">
-                        {discount.icon}
-                      </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="text-[13px] font-extrabold text-[#1c3f25]">{discount.name}</h3>
                         <p className="text-[10px] text-gray-600 leading-snug">{discount.desc}</p>
@@ -430,16 +416,6 @@ export default function CampaignPage() {
                           type="text"
                           value={editEventForm.name}
                           onChange={(e) => setEditEventForm({ ...editEventForm, name: e.target.value })}
-                          className="no-spinner w-full bg-[#e4f0de] text-[#1c3f25] text-xs px-3 py-2 rounded-xl outline-none focus:ring-2 focus:ring-[#267a32]/30"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="text-[10px] font-bold text-gray-600 block mb-1">Emoji</label>
-                        <input
-                          type="text"
-                          value={editEventForm.emoji}
-                          onChange={(e) => setEditEventForm({ ...editEventForm, emoji: e.target.value })}
                           className="no-spinner w-full bg-[#e4f0de] text-[#1c3f25] text-xs px-3 py-2 rounded-xl outline-none focus:ring-2 focus:ring-[#267a32]/30"
                         />
                       </div>
@@ -547,9 +523,6 @@ export default function CampaignPage() {
                             </button>
                           </div>
                         </div>
-                        <div>
-                          <h3 className="text-white font-extrabold text-2xl">{event.emoji} {event.name}</h3>
-                        </div>
                       </div>
 
                       <div className="bg-white p-4">
@@ -572,7 +545,6 @@ export default function CampaignPage() {
                     // Eco Holiday Display
                     <div className="rounded-3xl p-4 shadow-sm relative" style={{ backgroundColor: event.bgColor }}>
                       <div className="flex items-start justify-between mb-2">
-                        <span className="text-2xl">{event.emoji}</span>
                         <div className="flex gap-2">
                           <button
                             onClick={() => handleEditEvent(event)}
@@ -635,7 +607,7 @@ export default function CampaignPage() {
                       : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
                       }`}
                   >
-                    📋 Voucher
+                    Voucher
                   </button>
                   <button
                     onClick={() => setNewCampaignForm({ ...newCampaignForm, type: 'event' })}
@@ -644,7 +616,7 @@ export default function CampaignPage() {
                       : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
                       }`}
                   >
-                    🎁 Sự Kiện
+                    Sự Kiện
                   </button>
                 </div>
               </div>
@@ -657,19 +629,6 @@ export default function CampaignPage() {
                   value={newCampaignForm.name}
                   onChange={(e) => setNewCampaignForm({ ...newCampaignForm, name: e.target.value })}
                   placeholder="Nhập tên chiến dịch"
-                  className="w-full bg-[#e4f0de] text-[#1c3f25] text-sm px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-[#267a32]/30"
-                />
-              </div>
-
-              {/* Emoji */}
-              <div>
-                <label className="text-[10px] font-bold text-gray-600 block mb-1">Emoji</label>
-                <input
-                  type="text"
-                  value={newCampaignForm.emoji}
-                  onChange={(e) => setNewCampaignForm({ ...newCampaignForm, emoji: e.target.value })}
-                  placeholder="🍵"
-                  maxLength={2}
                   className="w-full bg-[#e4f0de] text-[#1c3f25] text-sm px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-[#267a32]/30"
                 />
               </div>
@@ -733,7 +692,7 @@ export default function CampaignPage() {
                     step="0.1"
                     value={newCampaignForm.multiplier}
                     onChange={(e) => setNewCampaignForm({ ...newCampaignForm, multiplier: e.target.value })}
-                    placeholder="2.5"
+                    placeholder="Ví dụ: 2.5"
                     className="no-spinner w-full bg-[#e4f0de] text-[#1c3f25] text-sm px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-[#267a32]/30"
                   />
                 </div>
@@ -755,7 +714,6 @@ export default function CampaignPage() {
                     name: '',
                     description: '',
                     type: 'discount',
-                    emoji: '',
                     multiplier: '',
                     quantity: '',
                     expiryDate: '',

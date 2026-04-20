@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, ImagePlus, ArrowRight, Upload } from "lucide-react";
+import { ArrowLeft, ArrowRight, Upload } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -15,6 +15,20 @@ export default function ChooseStationPage({ onNext, onBack }: StepProps) {
     stationCode: "",
     idFrontImage: "",
     idBackImage: "",
+  });
+
+  const [errors, setErrors] = useState({
+    stationName: "",
+    stationCode: "",
+    idFrontImage: "",
+    idBackImage: "",
+  });
+
+  const [touched, setTouched] = useState({
+    stationName: false,
+    stationCode: false,
+    idFrontImage: false,
+    idBackImage: false,
   });
 
   const handleInputChange = (field: string, value: string | File) => {
@@ -34,6 +48,48 @@ export default function ChooseStationPage({ onNext, onBack }: StepProps) {
       }));
     }
   };
+
+  const validateField = (field: string, value: any) => {
+    switch (field) {
+      case "stationName":
+        return value.trim() ? "" : "Vui lòng nhập tên cơ sở";
+      case "stationCode":
+        return value.trim() ? "" : "Vui lòng nhập mã cơ sở";
+      case "idFrontImage":
+        return value ? "" : "Vui lòng tải ảnh mặt trước CCCD";
+      case "idBackImage":
+        return value ? "" : "Vui lòng tải ảnh mặt sau CCCD";
+      default:
+        return "";
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {
+      stationName: validateField("stationName", formData.stationName),
+      stationCode: validateField("stationCode", formData.stationCode),
+      idFrontImage: validateField("idFrontImage", formData.idFrontImage),
+      idBackImage: validateField("idBackImage", formData.idBackImage),
+    };
+
+    setErrors(newErrors);
+
+    return Object.values(newErrors).every((e) => e === "");
+  };
+
+  const handleNext = () => {
+    setTouched({
+      stationName: true,
+      stationCode: true,
+      idFrontImage: true,
+      idBackImage: true,
+    });
+
+    if (validateForm()) {
+      onNext();
+    }
+  };
+  
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col flex-1 p-4 md:p-12">
       <header className="flex items-center justify-between mb-6">
@@ -74,11 +130,21 @@ export default function ChooseStationPage({ onNext, onBack }: StepProps) {
           <div className="space-y-2">
             <label className="text-xs font-bold text-gray-600 uppercase">Tên cơ sở kinh doanh</label>
             <input type="text" placeholder="Tên trạm..." value={formData.stationName} onChange={(e) => handleInputChange("stationName", e.target.value)} className="w-full bg-white lg:bg-[#f2f9ea]/40 border-none rounded-2xl py-4 px-6 focus:ring-2 focus:ring-[#176a21] outline-none shadow-sm" />
+            {errors.stationName && touched.stationName && (
+              <p className="text-red-500 text-sm">
+                {errors.stationName}
+              </p>
+            )}
           </div>
 
           <div className="space-y-2">
             <label className="text-xs font-bold text-gray-600 uppercase">Mã cơ sở kinh doanh</label>
             <input type="text" placeholder="Mã trạm..." value={formData.stationCode} onChange={(e) => handleInputChange("stationCode", e.target.value)} className="w-full bg-white lg:bg-[#f2f9ea]/40 border-none rounded-2xl py-4 px-6 focus:ring-2 focus:ring-[#176a21] outline-none shadow-sm" />
+            {errors.stationCode && touched.stationCode && (
+              <p className="text-red-500 text-sm">
+                {errors.stationCode}
+              </p>
+            )}
           </div>
 
           {/* Responsive Upload Area: Dàn hàng ngang trên desktop */}
@@ -119,6 +185,11 @@ export default function ChooseStationPage({ onNext, onBack }: StepProps) {
                   className="hidden"
                 />
               </label>
+              {errors.idFrontImage && touched.idFrontImage && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.idFrontImage}
+                </p>
+              )}
             </div>
 
             {/* Back ID Card */}
@@ -157,10 +228,15 @@ export default function ChooseStationPage({ onNext, onBack }: StepProps) {
                   className="hidden"
                 />
               </label>
+              {errors.idBackImage && touched.idBackImage && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.idBackImage}
+                </p>
+              )}
             </div>
           </div>
 
-          <button onClick={onNext} className="w-full bg-[#176a21] text-white font-bold py-5 rounded-full flex items-center justify-center gap-3 shadow-lg hover:bg-[#115018] transition-all transform active:scale-95">
+          <button onClick={handleNext} className="w-full bg-[#176a21] text-white font-bold py-5 rounded-full flex items-center justify-center gap-3 shadow-lg hover:bg-[#115018] transition-all transform active:scale-95">
             Tiếp tục <ArrowRight size={20} />
           </button>
         </div>

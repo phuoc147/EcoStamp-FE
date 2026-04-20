@@ -129,6 +129,8 @@ function SignUpContent() {
     setErrorMessage(null);
     if (step > 1) {
       router.push(`/signin/partner?step=${step - 1}`);
+    } else {
+      router.push("/login");
     }
   };
 
@@ -171,7 +173,7 @@ function SignUpContent() {
   };
 
   return (
-    <section className="w-full max-w-md">
+    <section className="w-full max-w-md min-h-screen flex flex-col">
       {renderStep()}
     </section>
   );

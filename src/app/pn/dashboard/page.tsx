@@ -41,21 +41,6 @@ export default function Dashboard() {
           <p className="text-sm text-gray-500 mb-5">
             Giám sát trạng thái trạm và quản lý dòng chảy tài nguyên của bạn một cách hiệu quả.
           </p>
-
-          <div className="flex gap-2">
-            <button
-              onClick={handleRefresh}
-              className="flex items-center justify-center gap-2 flex-1 bg-[#e4f0de] text-[#1c3f25] font-bold py-3 rounded-full text-xs hover:bg-[#d5e8cd] transition"
-            >
-              <RefreshCw size={14} /> Cập nhật trạng thái
-            </button>
-            <button
-              onClick={handleRequest}
-              className="flex items-center justify-center gap-2 flex-1 bg-[#267a32] text-white font-bold py-3 rounded-full text-xs hover:bg-[#1f6328] transition"
-            >
-              <Truck size={14} /> Yêu cầu vận chuyển
-            </button>
-          </div>
         </section>
 
         <StorageCapacity />

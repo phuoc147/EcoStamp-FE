@@ -51,7 +51,7 @@ export default function SetupPin({ formData, handleInputChange, errorMessage, on
             </div>
 
             {/* Content */}
-            <div className="flex-1 px-4 pb-4 overflow-y-auto flex flex-col">
+            <div className="flex-1 px-4 pb-4 overflow-y-auto flex flex-col scrollbar-hide">
                 {/* Title */}
                 <h1 className="text-[28px] font-bold text-gray-900 mb-4 leading-tight text-center">
                     Thiết lập Mã PIN bảo mật
@@ -144,7 +144,7 @@ export default function SetupPin({ formData, handleInputChange, errorMessage, on
                 {/* Complete Button */}
                 <button
                     onClick={onSubmit}
-                    className="w-full py-4 bg-green-700 text-white font-semibold rounded-full hover:bg-green-800 transition"
+                    className="w-full py-4 bg-green-700 text-white font-semibold rounded-full hover:bg-green-800 transition mt-8"
                 >
                     Hoàn tất đăng ký
                 </button>

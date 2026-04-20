@@ -12,9 +12,9 @@ export default function PartnerHeader() {
         router.push('/pn/edit-station');
     };
 
-    const handleHistory = () => {
+    const handleRequest = () => {
         setShowDropdown(false);
-        router.push('/pn/history');
+        router.push('/pn/request');
     };
 
     const handleExit = () => {
@@ -74,21 +74,21 @@ export default function PartnerHeader() {
                                     className="w-full text-left px-4 py-3 text-sm font-medium text-[#1c3f25] hover:bg-[#f4faec] transition-colors flex items-center gap-2 border-b border-gray-100"
                                 >
                                     <span className="material-symbols-outlined text-lg">edit</span>
-                                    Chỉnh sửa thông tin Trạm Xanh
+                                    Chỉnh sửa thông tin Trạm xanh
                                 </button>
                                 <button
-                                    onClick={handleHistory}
+                                    onClick={handleRequest}
                                     className="w-full text-left px-4 py-3 text-sm font-medium text-[#1c3f25] hover:bg-[#f4faec] transition-colors flex items-center gap-2 border-b border-gray-100"
                                 >
-                                    <span className="material-symbols-outlined text-lg">history</span>
-                                    Lịch sử
+                                    <span className="material-symbols-outlined text-lg">assignment</span>
+                                    Yêu cầu thu gom
                                 </button>
                                 <button
                                     onClick={handleExit}
                                     className="w-full text-left px-4 py-3 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors flex items-center gap-2"
                                 >
                                     <span className="material-symbols-outlined text-lg">logout</span>
-                                    Trở về Trang chủ
+                                    Về người dùng
                                 </button>
                             </div>
                         )}
