@@ -1,18 +1,22 @@
-import HomeHero from "./_components/HomeHero";
-import HomeRecentActivity from "./_components/HomeRecentActivity";
-import HomeStations from "./_components/HomeStations";
-import HomeStats from "./_components/HomeStats";
-import HomeTips from "./_components/HomeTips";
+import React from 'react';
 
+// Import các components đã chia nhỏ
+import ProgressBanner from './_components/ProgressBanner';
+import TotalStamps from './_components/TotalStamps';
+import ImpactStats from './_components/ImpactStats';
+import NearbyStations from './_components/NearbyStations';
+import GreenTips from './_components/GreenTips';
+import RecentActivity from './_components/RecentActivity';
 
-export default function HomePage() {
+export default function ConsumerDashboard() {
   return (
-    <div className="mx-auto max-w-2xl space-y-8 px-6 pt-24 pb-28">
-      <HomeHero />
-      <HomeStats />
-      <HomeStations />
-      <HomeTips />
-      <HomeRecentActivity/>
+    <div className="px-5 pb-32 animate-in fade-in duration-500">
+      <ProgressBanner />
+      <TotalStamps />
+      <ImpactStats />
+      <NearbyStations />
+      <GreenTips />
+      <RecentActivity />
     </div>
   );
 }

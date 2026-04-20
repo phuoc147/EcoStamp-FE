@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Roboto } from "next/font/google";
 import { Providers } from "@/src/providers";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+// 1. Khởi tạo font Roboto
+const roboto = Roboto({
+  subsets: ["latin", "vietnamese"],
+  weight: ['100', '300', '400', '500', '700', '900'], // Bắt buộc phải có với Roboto
+  variable: "--font-roboto",
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -25,8 +23,8 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="vn"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      lang="vi"
+      className={`${roboto.variable} h-full antialiased`}
     >
       <head>
         <link
@@ -34,9 +32,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#f2f9ea] flex justify-center">
+      {/* 2. Class font-sans ở đây sẽ tự động ăn theo biến --font-roboto */}
+      <body className="font-sans bg-[#f5fae4] text-gray-800 flex justify-center">
         <Providers>
-          <div className="w-full min-h-screen" style={{ maxWidth: 430 }}>
+          <div className="w-full bg-[#f4faec] min-h-screen relative shadow-lg overflow-x-hidden" style={{ maxWidth: 430 }}>
             {children}
           </div>
         </Providers>

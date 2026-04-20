@@ -1,107 +1,80 @@
-"use client";
+'use client'; 
 
-import { usePathname, useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from 'react';
+import { Home, Map, ScanLine, Gift, User } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-type Role = "consumer" | "partner" | "employee";
+const NAV_ITEMS = [
+  { path: '/csm/home', icon: Home, label: 'Home' },
+  { path: '/csm/map', icon: Map, label: 'Map' },
+  { path: '/csm/scan', icon: ScanLine, label: 'Scan' },
+  { path: '/csm/rewards', icon: Gift, label: 'Rewards' },
+  { path: '/csm/profile', icon: User, label: 'Profile' },
+];
 
-type Tab = {
-  label: string;
-  href: string;
-  icon: string;
-};
-
-function getTabs(role: Role): Tab[] {
-  switch (role) {
-    case "consumer":
-      return [
-        { label: "Trang chủ", href: "/csm/home", icon: "home" },
-        { label: "Trạm xanh", href: "/csm/map", icon: "map" },
-        { label: "Quét", href: "/csm/scan", icon: "qr_code_scanner" },
-        { label: "Sưu tập", href: "/csm/collection", icon: "collections" },
-        { label: "Cộng đồng", href: "/csm/community", icon: "groups" },
-        { label: "Cá nhân", href: "/csm/profile", icon: "person" },
-      ];
-
-    case "partner":
-      return [
-        { label: "Dashboard", href: "/pn/dashboard", icon: "home" },
-        { label: "Campaign", href: "/pn/campaign", icon: "map" },
-        { label: "Verify", href: "/pn/verification", icon: "qr_code_scanner" },
-      ];
-
-    case "employee":
-      return [{ label: "Employee", href: "/pn/employee", icon: "person" }];
-  }
-}
-
-export default function BottomBar({ role }: { role: Role }) {
+export default function BottomBar({ role }: { role?: string }) {
   const pathname = usePathname();
-  const router = useRouter();
+  
+  // Logic so khớp đường dẫn chính xác hơn
+  const getActiveIndex = () => {
+    if (!pathname) return 0;
+    
+    // Ưu tiên so khớp các trang con trước (ví dụ: /scan/ai khớp với /scan)
+    const index = NAV_ITEMS.findIndex(item => {
+      if (item.path === '/csm/home') return pathname === '/csm/home';
+      return pathname.startsWith(item.path);
+    });
+    
+    return index !== -1 ? index : 0;
+  };
 
-  const tabs = getTabs(role);
-
-  const activeIndex = Math.max(
-    0,
-    tabs.findIndex(
-      (t) => pathname === t.href || pathname.startsWith(t.href + "/")
-    )
-  );
+  const activeIndex = getActiveIndex();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 flex justify-center z-50">
-      <div className="w-full max-w-[430px]">
-        <div className="relative flex justify-around items-end rounded-t-2xl bg-emerald-50/70 backdrop-blur-3xl py-3 shadow-[0_-12px_48px_rgba(0,0,0,0.06)]">
+    <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] z-50 px-5 pb-5 pointer-events-none">
+      <nav className="pointer-events-auto relative bg-[#ecf7df]/95 backdrop-blur-lg border border-white/60 rounded-[32px] flex items-center shadow-lg h-[72px] px-2">
 
-          {/* INDICATOR */}
-          <motion.div
-            className="absolute bottom-4 h-14 w-14 rounded-full bg-emerald-600"
-            animate={{
-              left: `${(activeIndex + 0.5) * (100 / tabs.length)}%`,
-            }}
-            style={{
-              translateX: "-50%",
-            }}
-            transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          />
-
-          {tabs.map((tab, i) => {
-            const isActive = i === activeIndex;
-
-            return (
-              <button
-                key={tab.href}
-                onClick={() => router.push(tab.href)}
-                className="relative flex flex-col items-center justify-center w-16"
-              >
-                {/* ICON */}
-                <motion.span
-                animate={{
-                    y: isActive ? -10 : 0,
-                    scale: isActive ? 1.2 : 1,
-                    color: isActive ? "#ffffff" : "#065f46",
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="material-symbols-outlined z-10"
-                >
-                {tab.icon}
-                </motion.span>
-
-                {/* LABEL */}
-                <motion.span
-                  animate={{
-                    opacity: isActive ? 0 : 1,
-                    y: isActive ? 8 : 0,
-                  }}
-                  className="text-[10px] font-semibold tracking-wider text-emerald-800/50"
-                >
-                  {tab.label}
-                </motion.span>
-              </button>
-            );
-          })}
+        <div
+          className="absolute top-0 left-2 h-full flex justify-center items-center pointer-events-none transition-transform duration-500 cubic-bezier(0.16, 1, 0.3, 1)"
+          style={{
+            width: 'calc((100% - 16px) / 5)', 
+            transform: `translateX(${activeIndex * 100}%)` 
+          }}
+        >
+          <div className="w-14 h-14 bg-[#00875a] rounded-full shadow-md -translate-y-3" />
         </div>
-      </div>
-    </nav>
+
+        {/* CÁC NÚT BẤM (Icons) */}
+        {NAV_ITEMS.map((item, index) => {
+          const isActive = index === activeIndex;
+          const Icon = item.icon;
+
+          return (
+            <Link
+              key={item.path}
+              href={item.path}
+              className="relative z-10 flex flex-col items-center justify-center w-full h-full"
+            >
+              <div 
+                className={`transition-all duration-500 ease-out ${
+                  isActive ? '-translate-y-3.5 text-white' : 'text-gray-400'
+                }`}
+              >
+                <Icon size={isActive ? 22 : 20} strokeWidth={isActive ? 2.5 : 2} />
+              </div>
+
+              <span
+                className={`absolute bottom-2 text-[9px] font-bold uppercase tracking-wider transition-all duration-300 ${
+                  isActive ? 'opacity-0 translate-y-2' : 'opacity-100 text-gray-400'
+                }`}
+              >
+                {item.label}
+              </span>
+            </Link>
+          );
+        })}
+      </nav>
+    </div>
   );
 }

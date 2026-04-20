@@ -3,13 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-roboto);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +18,33 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+@keyframes pageSlide {
+  from {
+    opacity: 0;
+    transform: translateX(30px); 
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-page-slide {
+  animation: pageSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Đảm bảo vùng chứa Leaflet luôn có kích thước */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Fix lỗi các mảnh bản đồ bị lệch khi chuyển trang */
+.leaflet-tile-container img {
+  width: 256.5px !important;
+  height: 256.5px !important;
 }
