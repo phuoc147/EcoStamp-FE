@@ -18,89 +18,75 @@ function getTabs(role: Role): Tab[] {
         { label: "Trang chủ", href: "/csm/home", icon: "home" },
         { label: "Trạm xanh", href: "/csm/map", icon: "map" },
         { label: "Quét", href: "/csm/scan", icon: "qr_code_scanner" },
-        { label: "Sưu tập", href: "/csm/collection", icon: "collections" },
+        { label: "Sưu tập", href: "/csm/rewards", icon: "collections" },
         { label: "Cộng đồng", href: "/csm/community", icon: "groups" },
-        { label: "Cá nhân", href: "/csm/profile", icon: "person" },
       ];
-
     case "partner":
       return [
-        { label: "Dashboard", href: "/pn/dashboard", icon: "home" },
-        { label: "Campaign", href: "/pn/campaign", icon: "map" },
-        { label: "Verify", href: "/pn/verification", icon: "qr_code_scanner" },
+        { label: "Trang chủ", href: "/pn/dashboard", icon: "home" },
+        { label: "Nhân sự", href: "/pn/staff", icon: "people" },
+        { label: "Trạm xanh", href: "/pn/status", icon: "apartment" },
+        { label: "Lịch sử", href: "/pn/history", icon: "history" },
+        { label: "Chiến dịch", href: "/pn/campaign", icon: "campaign" },
       ];
-
     case "employee":
-      return [{ label: "Employee", href: "/pn/employee", icon: "person" }];
+      return [
+        { label: "Trang chủ", href: "/pn/dashboard", icon: "home" },
+        { label: "Trạm xanh", href: "/pn/status", icon: "apartment" },
+        { label: "Lịch sử", href: "/pn/history", icon: "history" },
+        { label: "Chiến dịch", href: "/pn/campaign", icon: "campaign" },
+      ];
+    default:
+      return [];
   }
 }
 
 export default function BottomBar({ role }: { role: Role }) {
   const pathname = usePathname();
   const router = useRouter();
-
   const tabs = getTabs(role);
 
-  const activeIndex = Math.max(
-    0,
-    tabs.findIndex(
-      (t) => pathname === t.href || pathname.startsWith(t.href + "/")
-    )
-  );
+  const activeIndex = tabs.findIndex((t) => pathname === t.href);
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 flex justify-center z-50">
-      <div className="w-full max-w-[430px]">
-        <div className="relative flex justify-around items-end rounded-t-2xl bg-emerald-50/70 backdrop-blur-3xl py-3 shadow-[0_-12px_48px_rgba(0,0,0,0.06)]">
+    /* Bottom nav cho mobile */
+    <nav className="w-full border-t border-gray-200 rounded-t-2xl">
+      <div className="relative flex justify-around items-end bg-white py-2 rounded-t-2xl shadow-[0_-2px_8px_rgba(0,0,0,0.04)]">
+        <motion.div
+          className="absolute bottom-3 h-13 w-13 rounded-2xl bg-[#267a32]"
+          animate={{ left: `${((activeIndex + 0.5) * 100) / tabs.length}%` }}
+          style={{ translateX: "-50%" }}
+          transition={{ type: "spring", stiffness: 300, damping: 25 }}
+        />
 
-          {/* INDICATOR */}
-          <motion.div
-            className="absolute bottom-4 h-14 w-14 rounded-full bg-emerald-600"
-            animate={{
-              left: `${(activeIndex + 0.5) * (100 / tabs.length)}%`,
-            }}
-            style={{
-              translateX: "-50%",
-            }}
-            transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          />
-
-          {tabs.map((tab, i) => {
-            const isActive = i === activeIndex;
-
-            return (
-              <button
-                key={tab.href}
-                onClick={() => router.push(tab.href)}
-                className="relative flex flex-col items-center justify-center w-16"
-              >
-                {/* ICON */}
-                <motion.span
+        {tabs.map((tab, i) => {
+          const isActive = i === activeIndex;
+          return (
+            <button
+              key={tab.href}
+              onClick={() => router.push(tab.href)}
+              className="relative flex flex-col items-center justify-center w-16 py-2"
+            >
+              <motion.span
                 animate={{
-                    y: isActive ? -10 : 0,
-                    scale: isActive ? 1.2 : 1,
-                    color: isActive ? "#ffffff" : "#065f46",
+                  scale: isActive ? 1.1 : 1,
+                  color: isActive ? "#ffffff" : "#000000",
                 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="material-symbols-outlined z-10"
-                >
+                className="material-symbols-outlined text-2xl z-10"
+              >
                 {tab.icon}
-                </motion.span>
-
-                {/* LABEL */}
-                <motion.span
-                  animate={{
-                    opacity: isActive ? 0 : 1,
-                    y: isActive ? 8 : 0,
-                  }}
-                  className="text-[10px] font-semibold tracking-wider text-emerald-800/50"
-                >
-                  {tab.label}
-                </motion.span>
-              </button>
-            );
-          })}
-        </div>
+              </motion.span>
+              <motion.span
+                animate={{
+                  color: isActive ? "#ffffff" : "#000000",
+                }}
+                className="text-[10px] font-semibold mt-0.5"
+              >
+                {tab.label}
+              </motion.span>
+            </button>
+          );
+        })}
       </div>
     </nav>
   );

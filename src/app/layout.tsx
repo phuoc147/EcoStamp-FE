@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import { Providers } from "@/src/providers";
 import "./globals.css";
 
@@ -10,12 +10,16 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta-sans",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: "EcoStamp",
-  description: "Production-grade frontend skeleton with mock auth",
+  description: "Trải nghiệm sống xanh trên mọi nền tảng",
 };
 
 export default function RootLayout({
@@ -26,7 +30,8 @@ export default function RootLayout({
   return (
     <html
       lang="vn"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable} ${plusJakartaSans.variable} h-full antialiased`}
     >
       <head>
         <link
@@ -34,9 +39,9 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#f2f9ea] flex justify-center">
+      <body className="bg-gray-200 min-h-screen flex items-center justify-center">
         <Providers>
-          <div className="w-full min-h-screen" style={{ maxWidth: 430 }}>
+          <div className="w-93.75 h-screen max-h-screen bg-white shadow-2xl overflow-hidden flex flex-col">
             {children}
           </div>
         </Providers>

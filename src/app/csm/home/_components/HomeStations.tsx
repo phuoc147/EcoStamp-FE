@@ -1,3 +1,7 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 const STATIONS = [
   {
     name: "GreenPoint Landmark 81",
@@ -18,41 +22,37 @@ const STATIONS = [
 ];
 
 export default function HomeStations() {
+  const router = useRouter();
+  
   return (
-    <section className="space-y-4">
+    <section className="space-y-3">
       <div className="flex items-end justify-between">
-        <h2 className="text-xl font-extrabold text-[#2a3127]">Trạm Xanh gần bạn</h2>
-        <button type="button" className="text-sm font-bold text-[#176a21]">
+        <h2 className="text-lg font-extrabold text-[#2a3127]">Trạm Xanh gần bạn</h2>
+        <button type="button" onClick={() => router.push("/csm/map")} className="text-xs font-bold text-[#176a21] transition-all duration-75 active:scale-95 active:opacity-70 hover:text-[#1b4332]">
           Xem tất cả
         </button>
       </div>
 
-      <div className="-mx-6 flex gap-4 overflow-x-auto px-6 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="-mx-6 flex flex-nowrap gap-4 overflow-x-auto px-6 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {STATIONS.map((station) => (
           <article
             key={station.name}
-            className="min-w-70 overflow-hidden rounded-3xl bg-[#ffffff] shadow-sm"
+            className="min-w-[260px] flex-shrink-0 overflow-hidden rounded-3xl bg-[#ffffff] shadow-sm"
           >
-            <div className="h-32 bg-[#e2ebda]">
-              <img
-                src={station.image}
-                alt={station.name}
-                className="h-full w-full object-cover"
-              />
+            <div className="h-28 bg-[#e2ebda]">
+              <img src={station.image} alt={station.name} className="h-full w-full object-cover" />
             </div>
-            <div className="flex flex-col gap-2 p-4">
+            <div className="flex flex-col gap-1 p-4">
               <div className="flex items-start justify-between gap-3">
-                <h3 className="text-lg font-bold leading-tight text-[#2a3127]">
+                <h3 className="text-base font-bold leading-tight text-[#2a3127]">
                   {station.name}
                 </h3>
-                <span
-                  className={`rounded-full px-2 py-1 text-[10px] font-black uppercase ${station.statusClass}`}
-                >
+                <span className={`rounded-full px-2 py-0.5 text-[9px] font-black uppercase ${station.statusClass}`}>
                   {station.status}
                 </span>
               </div>
-              <div className="flex items-center gap-2 text-sm text-[#575e52]">
-                <span className="material-symbols-outlined text-sm">near_me</span>
+              <div className="flex items-center gap-2 text-xs text-[#575e52]">
+                <span className="material-symbols-outlined text-xs">near_me</span>
                 <span>{station.distance}</span>
               </div>
             </div>

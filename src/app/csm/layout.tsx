@@ -1,23 +1,24 @@
 import type { ReactNode } from "react";
-import { redirect } from "next/navigation";
 import BottomBar from "@/src/components/BottomBars";
 import ConsumerHeader from "@/src/components/ConsumerHeader";
-import { getServerSessionUser } from "@/src/features/auth/lib";
+import { CsmProviders } from "./providers";
 
 export default async function ConsumerLayout({
   children,
 }: {
   children: ReactNode;
 }) {
-  // const user = await getServerSessionUser();
-
-  // if (!user || user.role !== "consumer") {
-  //   redirect("/login");
-  // }
-
-  return <div className="bg-[#f2f9ea]">
-      <ConsumerHeader />
-      <main>{children}</main>
-      <BottomBar role="consumer" />
-    </div>;
+  return (
+    <CsmProviders>
+      <div className="flex h-screen flex-col overflow-hidden bg-[#f2f9ea]">
+        <ConsumerHeader />
+        
+        <main className="flex-1 overflow-y-auto scroll-smooth scrollbar-hide">
+          {children}
+        </main>
+        
+        <BottomBar role="consumer" />
+      </div>
+    </CsmProviders>
+  );
 }
