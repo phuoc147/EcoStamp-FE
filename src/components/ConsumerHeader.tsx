@@ -1,6 +1,11 @@
 "use client";
 
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+
 export default function ConsumerHeader() {
+  const router = useRouter();
+
   return (
     <header className="bg-emerald-50/70 border-b border-emerald-100 shadow-sm sticky top-0 z-50">
       {/* Container này sẽ giúp nội dung phù hợp với mobile 375px */}
@@ -25,13 +30,16 @@ export default function ConsumerHeader() {
             </span>
           </button>
 
-          <div className="h-8 w-8 overflow-hidden rounded-full border-2 border-[#9df197]">
+          <Link 
+            href="/csm/profile" 
+            className="h-8 w-8 overflow-hidden rounded-full border-2 border-[#9df197] transition-transform active:scale-95 shadow-sm"
+          >
             <img
               className="h-full w-full object-cover"
               src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
               alt="Ảnh đại diện"
             />
-          </div>
+          </Link>
         </div>
       </div>
     </header>

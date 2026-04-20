@@ -1,14 +1,9 @@
-import { LocationProvider } from "./context/LocationContext";
-import { LangProvider } from "@/src/i18n/LangContext";
+import type { ReactNode } from "react";
 
-export default function ConsumerSigninLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function ConsumerRegisterLayout({ children }: { children: ReactNode }) {
   return (
-    <LangProvider>
-      <LocationProvider>{children}</LocationProvider>
-    </LangProvider>
+    <div className="h-screen w-full overflow-hidden bg-[#f2f9ea]">
+      {children}
+    </div>
   );
 }

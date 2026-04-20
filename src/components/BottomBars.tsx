@@ -18,8 +18,8 @@ function getTabs(role: Role): Tab[] {
         { label: "Trang chủ", href: "/csm/home", icon: "home" },
         { label: "Trạm xanh", href: "/csm/map", icon: "map" },
         { label: "Quét", href: "/csm/scan", icon: "qr_code_scanner" },
-        { label: "Sưu tập", href: "/csm/collection", icon: "collections" },
-        { label: "Cá nhân", href: "/csm/profile", icon: "person" },
+        { label: "Sưu tập", href: "/csm/rewards", icon: "collections" },
+        { label: "Cộng đồng", href: "/csm/community", icon: "groups" },
       ];
     case "partner":
       return [

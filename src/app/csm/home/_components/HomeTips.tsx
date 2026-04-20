@@ -24,29 +24,29 @@ const TIPS = [
 
 export default function HomeTips() {
   return (
-    <section className="space-y-4">
-      <h2 className="text-xl font-extrabold text-[#2a3127]">Mẹo Xanh cho bạn</h2>
+    <section className="space-y-3">
+      <h2 className="text-lg font-extrabold text-[#2a3127]">Mẹo Xanh cho bạn</h2>
 
-      <div className="-mx-6 flex gap-4 overflow-x-auto px-6 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="-mx-6 flex flex-nowrap gap-4 overflow-x-auto px-6 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {TIPS.map((tip) => (
           <article
             key={tip.title}
             className={`relative min-w-65 overflow-hidden rounded-3xl p-5 shadow-sm ${tip.bgClass}`}
           >
             <div className="absolute -right-4 -bottom-4 opacity-10">
-              <span className="material-symbols-outlined text-7xl">{tip.icon}</span>
+              <span className="material-symbols-outlined text-5xl">{tip.icon}</span>
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-xl">
+              <span className="material-symbols-outlined text-lg">
                 tips_and_updates
               </span>
-              <span className="text-[10px] font-bold uppercase tracking-wider">
+              <span className="text-[9px] font-bold uppercase tracking-wider">
                 {tip.title}
               </span>
             </div>
 
-            <p className="relative z-10 mt-3 text-sm font-medium leading-relaxed">
+            <p className="relative z-10 mt-2 text-[12px] font-medium leading-relaxed">
               {tip.content}
             </p>
           </article>

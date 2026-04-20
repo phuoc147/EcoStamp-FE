@@ -19,7 +19,7 @@ function RegistrationSteps() {
   return (
     <main className="flex min-h-screen w-full flex-col items-center bg-[#fcfdfa]">
       <div className="w-full lg:max-w-4xl flex-1 lg:bg-white lg:rounded-[48px] lg:shadow-xl overflow-y-auto flex flex-col scrollbar-hide">
-        {step === 1 && <Homepage onNext={() => navigateTo(2)} onBack={() => router.push("/login")} />}
+        {step === 1 && <Homepage onNext={() => navigateTo(2)} onBack={() => router.push("/csm/profile")} />}
         {step === 2 && <ChooseStationPage onNext={() => navigateTo(3)} onBack={() => router.back()} />}
         {step === 3 && <SetPinPage onNext={() => navigateTo(4)} onBack={() => router.back()} />}
         {step === 4 && <SuccessPage onHome={() => router.push( "/signin/employee?step=1")} />}

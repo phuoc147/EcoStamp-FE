@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import BottomBar from "@/src/components/BottomBars";
 import ConsumerHeader from "@/src/components/ConsumerHeader";
-import { LangProvider } from "@/src/i18n/LangContext";
 import { CsmProviders } from "./providers";
 
 export default async function ConsumerLayout({
@@ -11,9 +10,13 @@ export default async function ConsumerLayout({
 }) {
   return (
     <CsmProviders>
-      <div className="bg-[#f2f9ea]">
+      <div className="flex h-screen flex-col overflow-hidden bg-[#f2f9ea]">
         <ConsumerHeader />
-        <main>{children}</main>
+        
+        <main className="flex-1 overflow-y-auto scroll-smooth scrollbar-hide">
+          {children}
+        </main>
+        
         <BottomBar role="consumer" />
       </div>
     </CsmProviders>

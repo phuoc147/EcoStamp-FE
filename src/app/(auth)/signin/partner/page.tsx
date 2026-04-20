@@ -130,7 +130,7 @@ function SignUpContent() {
     if (step > 1) {
       router.push(`/signin/partner?step=${step - 1}`);
     } else {
-      router.push("/login");
+      router.push("/csm/profile");
     }
   };
 

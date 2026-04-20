@@ -21,29 +21,25 @@ const ACTIVITIES = [
 
 export default function HomeRecentActivity() {
   return (
-    <section className="space-y-4">
-      <h2 className="text-xl font-extrabold text-[#2a3127]">Hoạt động gần đây</h2>
+    <section className="space-y-3">
+      <h2 className="text-lg font-extrabold text-[#2a3127]">Hoạt động gần đây</h2>
 
       <div className="divide-y divide-[#e2ebda] overflow-hidden rounded-3xl bg-[#ffffff] shadow-sm">
         {ACTIVITIES.map((activity) => (
-          <div key={activity.title} className="flex items-center justify-between p-4">
-            <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#176a21]/5">
-                <span className="material-symbols-outlined text-[#176a21]">
+          <div key={activity.title} className="flex items-center justify-between p-3.5">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#176a21]/5">
+                <span className="material-symbols-outlined text-lg text-[#176a21]">
                   {activity.icon}
                 </span>
               </div>
               <div>
-                <p className="font-semibold text-[#2a3127]">{activity.title}</p>
-                <p className="text-sm text-[#575e52]">{activity.subtitle}</p>
+                <p className="text-sm font-semibold text-[#2a3127]">{activity.title}</p>
+                <p className="text-xs text-[#575e52]">{activity.subtitle}</p>
               </div>
             </div>
 
-            <span
-              className={`font-black ${
-                activity.points.startsWith("-") ? "text-[#b02500]" : "text-[#176a21]"
-              }`}
-            >
+            <span className={`text-sm font-black ${activity.points.startsWith("-") ? "text-[#b02500]" : "text-[#176a21]"}`}>
               {activity.points}
             </span>
           </div>
