@@ -1,5 +1,5 @@
 import type {
-  ApiErrorShape,
+  ApiError,
   ApiSuccess,
   AuthRole,
   AuthSession,
@@ -130,24 +130,3 @@ export type RejectStationJoinRequestResData = {
   user: AuthUser;
   actions: ProfileActions;
 };
-
-export type RegisterRes = ApiSuccess<RegisterResData> | ApiErrorShape;
-export type LoginRes = ApiSuccess<LoginResData> | ApiErrorShape;
-export type LogoutRes = ApiSuccess<LogoutResData> | ApiErrorShape;
-export type MeRes = ApiSuccess<MeResData> | ApiErrorShape;
-export type SwitchRoleRes = ApiSuccess<SwitchRoleResData> | ApiErrorShape;
-export type RegisterPartnerRes =
-  | ApiSuccess<RegisterPartnerResData>
-  | ApiErrorShape;
-export type RegisterEmployeeRes =
-  | ApiSuccess<RegisterEmployeeResData>
-  | ApiErrorShape;
-export type ListStationJoinRequestsRes =
-  | ApiSuccess<ListStationJoinRequestsResData>
-  | ApiErrorShape;
-export type ApproveStationJoinRequestRes =
-  | ApiSuccess<ApproveStationJoinRequestResData>
-  | ApiErrorShape;
-export type RejectStationJoinRequestRes =
-  | ApiSuccess<RejectStationJoinRequestResData>
-  | ApiErrorShape;

@@ -14,13 +14,12 @@ import {
 import { getSession } from "../features/auth/api";
 import type { MeResData } from "../features/auth/types";
 import type { AuthUser } from "../types/index";
+import { isApiSuccess } from "../lib";
 
 type AuthContextValue = {
   data: MeResData | null;
   user: AuthUser | null;
-  setUser: Dispatch<SetStateAction<AuthUser | null>>;
   isLoading: boolean;
-  loading: boolean;
   error: string | null;
   refresh: () => Promise<void>;
 };
@@ -39,8 +38,14 @@ export function AuthProvider({ children }: PropsWithChildren) {
 
     try {
       const session = await getSession();
-      setData(session);
-      setUser(session?.user ?? null);
+      if (isApiSuccess(session)) {
+        setData(session.data);
+        setUser(session.data.user);
+      } else {
+        setData(null);
+        setUser(null);
+        setError(session.error?.message || "Failed to load auth context");
+      }
     } catch (err) {
       setData(null);
       setUser(null);
@@ -52,17 +57,15 @@ export function AuthProvider({ children }: PropsWithChildren) {
     }
   }, []);
 
-  useEffect(() => {
-    void refresh();
-  }, [refresh]);
+  // useEffect(() => {
+  //   void refresh();
+  // }, [refresh]);
 
   const value = useMemo<AuthContextValue>(
     () => ({
       data,
       user,
-      setUser,
       isLoading,
-      loading: isLoading,
       error,
       refresh,
     }),

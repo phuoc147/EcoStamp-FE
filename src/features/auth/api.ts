@@ -20,22 +20,14 @@ import type {
 const AUTH_BASE = "/auth";
 
 // Login with username or phone + password
-export async function login(input: LoginReq): Promise<LoginResData> {
+export async function login(input: LoginReq) {
   return apiFetch<LoginResData>(`${AUTH_BASE}/login`, {
     method: "POST",
     body: JSON.stringify(input),
   });
 }
 
-// Keep old FE naming: signIn maps to backend register endpoint.
-export async function signIn(input: RegisterReq): Promise<RegisterResData> {
-  return apiFetch<RegisterResData>(`${AUTH_BASE}/register`, {
-    method: "POST",
-    body: JSON.stringify(input),
-  });
-}
-
-export async function register(input: RegisterReq): Promise<RegisterResData> {
+export async function register(input: RegisterReq) {
   return apiFetch<RegisterResData>(`${AUTH_BASE}/register`, {
     method: "POST",
     body: JSON.stringify(input),
@@ -43,56 +35,46 @@ export async function register(input: RegisterReq): Promise<RegisterResData> {
 }
 
 // Session check: return null when not authenticated
-export async function getSession(): Promise<MeResData | null> {
-  try {
-    return await apiFetch<MeResData>(`${AUTH_BASE}/me`, {
-      method: "GET",
-    });
-  } catch {
-    return null;
-  }
+export async function getSession() {
+  return await apiFetch<MeResData>(`${AUTH_BASE}/me`, {
+    method: "GET",
+  });
 }
 
-export async function logout(): Promise<void> {
-  await apiFetch<LogoutResData>(`${AUTH_BASE}/logout`, {
+export async function logout() {
+  return await apiFetch<LogoutResData>(`${AUTH_BASE}/logout`, {
     method: "POST",
   });
 }
 
-export async function me(): Promise<MeResData> {
+export async function me() {
   return apiFetch<MeResData>(`${AUTH_BASE}/me`, {
     method: "GET",
   });
 }
 
-export async function switchRole(
-  input: SwitchRoleReq,
-): Promise<SwitchRoleResData> {
+export async function switchRole(input: SwitchRoleReq) {
   return apiFetch<SwitchRoleResData>(`${AUTH_BASE}/switch-role`, {
     method: "POST",
     body: JSON.stringify(input),
   });
 }
 
-export async function registerPartner(
-  input: RegisterPartnerReq,
-): Promise<RegisterPartnerResData> {
+export async function registerPartner(input: RegisterPartnerReq) {
   return apiFetch<RegisterPartnerResData>(`${AUTH_BASE}/register-partner`, {
     method: "POST",
     body: JSON.stringify(input),
   });
 }
 
-export async function registerEmployee(
-  input: RegisterEmployeeReq,
-): Promise<RegisterEmployeeResData> {
+export async function registerEmployee(input: RegisterEmployeeReq) {
   return apiFetch<RegisterEmployeeResData>(`${AUTH_BASE}/register-employee`, {
     method: "POST",
     body: JSON.stringify(input),
   });
 }
 
-export async function listStationJoinRequests(): Promise<ListStationJoinRequestsResData> {
+export async function listStationJoinRequests() {
   return apiFetch<ListStationJoinRequestsResData>(
     `${AUTH_BASE}/station-join-requests`,
     {
@@ -101,9 +83,7 @@ export async function listStationJoinRequests(): Promise<ListStationJoinRequests
   );
 }
 
-export async function approveStationJoinRequest(
-  requestId: string,
-): Promise<ApproveStationJoinRequestResData> {
+export async function approveStationJoinRequest(requestId: string) {
   return apiFetch<ApproveStationJoinRequestResData>(
     `${AUTH_BASE}/station-join-requests/${requestId}/approve`,
     {
@@ -112,9 +92,7 @@ export async function approveStationJoinRequest(
   );
 }
 
-export async function rejectStationJoinRequest(
-  requestId: string,
-): Promise<RejectStationJoinRequestResData> {
+export async function rejectStationJoinRequest(requestId: string) {
   return apiFetch<RejectStationJoinRequestResData>(
     `${AUTH_BASE}/station-join-requests/${requestId}/reject`,
     {

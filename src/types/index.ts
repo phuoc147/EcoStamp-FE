@@ -4,7 +4,7 @@ export type ApiSuccess<T> = {
   data: T;
 };
 
-export type ApiErrorShape = {
+export type ApiError = {
   success?: false;
   message?: string;
   error?: {

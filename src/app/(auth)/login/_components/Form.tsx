@@ -1,21 +1,28 @@
 "use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { login } from "@/src/features/auth/api";
 
 export default function LoginForm() {
   const router = useRouter();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!username.trim() || !password.trim()) {
       alert("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu!");
       return;
     }
-    router.push('/csm/home');
+    try {
+      const res = await login({ identifier: username, password });
+      router.push("/csm/home");
+    } catch (error) {
+      console.log("Error during login:", error);
+      alert("Đã xảy ra lỗi. Vui lòng thử lại sau.");
+    }
   };
 
   return (
@@ -33,8 +40,8 @@ export default function LoginForm() {
         <label className="px-1 text-[11px] font-bold uppercase tracking-widest text-[#7b5e52]">
           Tên đăng nhập
         </label>
-        <input 
-          type="text" 
+        <input
+          type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Nhập tài khoản của bạn"
@@ -48,7 +55,7 @@ export default function LoginForm() {
           Mật khẩu
         </label>
         <div className="relative flex items-center">
-          <input 
+          <input
             type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -62,23 +69,23 @@ export default function LoginForm() {
             className="absolute right-4 text-gray-400 active:scale-90 transition-transform flex items-center justify-center"
           >
             <span className="material-symbols-outlined text-xl select-none">
-              {showPassword ? 'visibility' : 'visibility_off'}
+              {showPassword ? "visibility" : "visibility_off"}
             </span>
           </button>
         </div>
       </div>
 
       <div className="flex justify-end pr-1">
-        <button 
-          type="button" 
-        //   onClick={() => router.push('/auth/forgot-password')}
+        <button
+          type="button"
+          //   onClick={() => router.push('/auth/forgot-password')}
           className="text-xs font-bold text-[#176a21] active:opacity-70"
         >
           Quên mật khẩu?
         </button>
       </div>
 
-      <button 
+      <button
         type="submit"
         className="flex h-13 w-full items-center justify-center rounded-2xl bg-[#176a21] text-base font-bold text-white shadow-md shadow-green-100 transition-all active:scale-[0.98]"
       >
